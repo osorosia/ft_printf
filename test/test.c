@@ -59,10 +59,20 @@ void test_d() {
     CASE("d"); P("%d", INT_MIN);
 }
 
+void test_i() {
+    INIT();
+    CASE("i"); P("%i", 0);
+    CASE("i"); P("%i", 14);
+    CASE("i"); P("%i", -14);
+    CASE("i"); P("%i", INT_MAX);
+    CASE("i"); P("%i", INT_MIN);
+}
+
 int main() {
     test_normal();
     test_c();
     test_s();
     test_p();
     test_d();
+    test_i();
 }
