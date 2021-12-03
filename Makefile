@@ -6,7 +6,7 @@
 #    By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 21:42:31 by rnishimo          #+#    #+#              #
-#    Updated: 2021/12/03 07:37:50 by rnishimo         ###   ########.fr        #
+#    Updated: 2021/12/03 07:44:46 by rnishimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS = ft_printf.c \
 	get_p.c \
 	get_d.c \
 	get_u.c \
+	get_x.c \
 	set_number_base.c \
 	calc_number_of_digit.c \
 
