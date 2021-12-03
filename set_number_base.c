@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 06:45:02 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/03 07:02:21 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/03 07:20:14 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	set_number_base(char *str, long long num, const char *base)
 		num *= -1;
 		str[0] = '-';
 	}
+	if (num == 0)
+		str[0] = base[0];
 	while (str_len-- > 0 && num != 0)
 	{
 		str[str_len] = base[num % base_size];
@@ -40,6 +42,8 @@ void	set_unsigined_number_base(char *str, size_t num, const char *base)
 	str_len = calc_unsigned_number_of_digit(num, base);
 	base_size = ft_strlen(base);
 	str[str_len] = '\0';
+	if (num == 0)
+		str[0] = base[0];
 	while (str_len-- > 0 && num != 0)
 	{
 		str[str_len] = base[num % base_size];
