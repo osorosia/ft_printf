@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 17:03:18 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/03 08:37:20 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/03 09:22:06 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@
 
 # include "./libft/libft.h"
 
-typedef struct	s_str
+typedef struct s_str
 {
 	char	*str;
 	size_t	size;
-} t_str;
+}	t_str;
 
 // main
-int	ft_printf(const char *format, ...);
+int		ft_printf(const char *format, ...);
 
 // parser
 size_t	parse_format(const char **format, va_list ap);
