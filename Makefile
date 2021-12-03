@@ -6,7 +6,7 @@
 #    By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 21:42:31 by rnishimo          #+#    #+#              #
-#    Updated: 2021/12/03 09:07:41 by rnishimo         ###   ########.fr        #
+#    Updated: 2021/12/03 10:56:11 by rnishimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 AR = ar rcs
 
-all: $(NAME) t fclean
+all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C ./libft
@@ -52,5 +52,7 @@ re: fclean all
 
 t: all
 	cd test && bash test.sh
+	cd ..
+	make fclean
 
 .PHONY: all clean fclean re test
