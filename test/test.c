@@ -86,6 +86,22 @@ void test_x() {
     CASE("x"); P("%x", INT_MIN);
 }
 
+void test_xx() {
+    INIT();
+    CASE("X"); P("%X", 0);
+    CASE("X"); P("%X", 14);
+    CASE("X"); P("%X", -14);
+    CASE("X"); P("%X", INT_MAX);
+    CASE("X"); P("%X", INT_MIN);
+}
+
+void test_per() {
+    INIT();
+    CASE("per"); P("%%");
+    CASE("per"); P("%%%%");
+    CASE("per"); P("%%%%%%");
+}
+
 int main() {
     test_normal();
     test_c();
@@ -95,4 +111,6 @@ int main() {
     test_i();
     test_u();
     test_x();
+    test_xx();
+    test_per();
 }

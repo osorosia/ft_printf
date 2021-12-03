@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:39:45 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/03 07:45:14 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/03 08:54:28 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_putnstr_fd(char *str, size_t n, int fd)
 	write(fd, str, n);
 }
 
-static void parse_conversion(const char **format, va_list ap, t_str *st_str)
+static void	parse_conversion(const char **format, va_list ap, t_str *st_str)
 {
 	if (**format == 'c')
 		get_c(ap, st_str);
@@ -33,6 +33,10 @@ static void parse_conversion(const char **format, va_list ap, t_str *st_str)
 		get_u(ap, st_str);
 	if (**format == 'x')
 		get_x(ap, st_str);
+	if (**format == 'X')
+		get_xx(ap, st_str);
+	if (**format == '%')
+		get_per(st_str);
 }
 
 size_t	parse_format(const char **format, va_list ap)

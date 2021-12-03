@@ -6,13 +6,13 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 06:45:02 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/03 07:02:26 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/03 08:58:34 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t calc_number_of_digit(long long num, const char *base)
+size_t	calc_number_of_digit(long long num, const char *base)
 {
 	size_t	digit;
 	size_t	base_size;
@@ -36,7 +36,7 @@ size_t calc_number_of_digit(long long num, const char *base)
 	return (digit);
 }
 
-size_t calc_unsigned_number_of_digit(size_t num, const char *base)
+size_t	calc_unsigned_number_of_digit(size_t num, const char *base)
 {
 	size_t	digit;
 	size_t	base_size;

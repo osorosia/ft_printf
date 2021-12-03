@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_s.c                                            :+:      :+:    :+:   */
+/*   get_per.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 06:02:06 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/03 09:00:52 by rnishimo         ###   ########.fr       */
+/*   Created: 2021/12/03 07:38:27 by rnishimo          #+#    #+#             */
+/*   Updated: 2021/12/03 08:49:41 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	get_s(va_list ap, t_str *st_str)
+void	get_per(t_str *st_str)
 {
-	char	*str;
-
-	str = va_arg(ap, char *);
-	if (str == NULL)
-		str = "(null)";
-	st_str->str = ft_strdup(str);
+	st_str->str = ft_strdup("%");
 	if (st_str->str == NULL)
 		return ;
-	st_str->size = ft_strlen(st_str->str);
+	st_str->size = 1;
 }

@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 16:53:50 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/02 06:46:02 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/03 09:00:41 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	_vprintf(const char *format, va_list ap)
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
-	int	print_size;
+	int		print_size;
 
 	if (format == NULL)
 		return (0);
