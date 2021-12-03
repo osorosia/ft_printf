@@ -68,6 +68,15 @@ void test_i() {
     CASE("i"); P("%i", INT_MIN);
 }
 
+void test_u() {
+    INIT();
+    CASE("u"); P("%u", 0);
+    CASE("u"); P("%u", 14);
+    CASE("u"); P("%u", -14);
+    CASE("u"); P("%u", INT_MAX);
+    CASE("u"); P("%u", INT_MIN);
+}
+
 int main() {
     test_normal();
     test_c();
@@ -75,4 +84,5 @@ int main() {
     test_p();
     test_d();
     test_i();
+    test_u();
 }

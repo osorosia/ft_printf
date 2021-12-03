@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 17:03:18 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/03 07:10:13 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/03 07:41:55 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void	get_c(va_list ap, t_str *st_str);
 void	get_s(va_list ap, t_str *st_str);
 void	get_p(va_list ap, t_str *st_str);
 void	get_d(va_list ap, t_str *st_str);
+void	get_u(va_list ap, t_str *st_str);
 
 // utils
 size_t	calc_number_of_digit(long long num, const char *base);
 size_t	calc_unsigned_number_of_digit(size_t num, const char *base);
 void	set_number_base(char *str, long long num, const char *base);
-void	set_unsigined_number_base(char *str, size_t num, const char *base);
-
+void	set_unsigned_number_base(char *str, size_t num, const char *base);
 
 #endif

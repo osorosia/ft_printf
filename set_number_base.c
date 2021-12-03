@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 06:45:02 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/03 07:20:14 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/03 07:40:00 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	set_number_base(char *str, long long num, const char *base)
 	}
 }
 
-void	set_unsigined_number_base(char *str, size_t num, const char *base)
+void	set_unsigned_number_base(char *str, size_t num, const char *base)
 {
 	size_t	str_len;
 	size_t	base_size;
