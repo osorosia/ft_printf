@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 17:03:18 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/03 10:05:22 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/03 10:17:28 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_flag
 {
 	size_t	width;
 	bool	minus;
+	bool	zero;
 }	t_flag;
 
 // main

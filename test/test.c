@@ -119,20 +119,16 @@ void test_minus() {
 
 void test_zero() {
     INIT();
-    CASE("zero"); P("[%010c]", 'a');
-    CASE("zero"); P("[%010s]", "aiueo");
-    CASE("zero"); P("[%010s]", "aiueo");
     CASE("zero"); P("[%01s]", "aiueo");
     CASE("zero"); P("[%01d]", 100);
     CASE("zero"); P("[%010d]", 100);
-    CASE("zero_minus"); P("[%-010c]", 'a');
-    CASE("zero_minus"); P("[%-010s]", "aiueo");
     CASE("zero_minus"); P("[%--010s]", "aiueo");
     CASE("zero_minus"); P("[%-01s]", "aiueo");
     CASE("zero_minus"); P("[%-01d]", 100);
     CASE("zero_minus"); P("[%-010d]", 100);
     CASE("zero_minus"); P("[%0-1d]", 100);
     CASE("zero_minus"); P("[%0-10d]", 100);
+    CASE("zero_minus"); P("[%0--10d]", 100);
 }
 
 int main() {

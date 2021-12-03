@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:39:45 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/03 10:08:32 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/03 10:40:03 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,12 @@ static void	parse_conversion(const char **format, va_list ap, t_str *st_str)
 
 static void	parse_flag(const char **format, t_flag *st_flag)
 {
-	while (**format == '-')
+	while (ft_strchr("-0", **format))
 	{
-		st_flag->minus = true;
+		if (**format == '-')
+			st_flag->minus = true;
+		if (**format == '0')
+			st_flag->zero = true;
 		(*format)++;
 	}
 	if (ft_strchr("123456789", **format))
@@ -61,7 +64,10 @@ static size_t	_print(t_str st_str, t_flag st_flag)
 	print_size = 0;
 	while (!st_flag.minus && st_flag.width-- > st_str.size)
 	{
-		ft_putchar_fd(' ', 1);
+		if (st_flag.zero)
+			ft_putchar_fd('0', 1);
+		else
+			ft_putchar_fd(' ', 1);
 		print_size++;
 	}
 	_putnstr_fd(st_str.str, st_str.size, 1);
@@ -83,8 +89,9 @@ size_t	parse_format(const char **format, va_list ap)
 	st_str.str = NULL;
 	st_flag.width = 0;
 	st_flag.minus = false;
+	st_flag.zero = false;
 	(*format)++;
-	if (ft_strchr("-123456789", **format))
+	if (ft_strchr("0-123456789", **format))
 		parse_flag(format, &st_flag);
 	if (ft_strchr("cspdiuxX%", **format))
 		parse_conversion(format, ap, &st_str);
