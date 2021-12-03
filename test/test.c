@@ -54,6 +54,7 @@ void test_d() {
     INIT();
     CASE("d"); P("%d", 0);
     CASE("d"); P("%d", 14);
+    CASE("d"); P("%d", -14);
     CASE("d"); P("%d", INT_MAX);
     CASE("d"); P("%d", INT_MIN);
 }
