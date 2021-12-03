@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 17:03:18 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/03 06:07:27 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/03 07:10:13 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ size_t	parse_format(const char **format, va_list ap);
 void	get_c(va_list ap, t_str *st_str);
 void	get_s(va_list ap, t_str *st_str);
 void	get_p(va_list ap, t_str *st_str);
+void	get_d(va_list ap, t_str *st_str);
 
 // utils
 size_t	calc_number_of_digit(long long num, const char *base);
