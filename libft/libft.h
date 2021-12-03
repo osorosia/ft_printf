@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 20:47:03 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/11/13 10:08:21 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/03 11:30:22 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
+void	ft_putnstr_fd(char *s, size_t n, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 t_list	*ft_lstnew(void *content);
