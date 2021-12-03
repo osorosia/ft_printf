@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:39:45 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/03 07:16:56 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/03 07:29:11 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void parse_conversion(const char **format, va_list ap, t_str *st_str)
 		get_s(ap, st_str);
 	if (**format == 'p')
 		get_p(ap, st_str);
-	if (**format == 'd')
+	if (**format == 'd' || **format == 'i')
 		get_d(ap, st_str);
 }
 
@@ -43,5 +43,6 @@ size_t	parse_format(const char **format, va_list ap)
 		return ((size_t)SIZE_MAX);
 	(*format)++;
 	ft_putnstr_fd(st_str.str, st_str.size, STDOUT_FILENO);
+	free(st_str.str);
 	return (st_str.size);
 }
