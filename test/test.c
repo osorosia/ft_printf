@@ -102,6 +102,13 @@ void test_per() {
     CASE("per"); P("%%%%%%");
 }
 
+void test_width() {
+    INIT();
+    CASE("width"); P("[%10c]", 'a');
+    CASE("width"); P("[%10s]", "aiueo");
+    CASE("width"); P("[%1s]", "aiueo");
+}
+
 int main() {
     test_normal();
     test_c();
@@ -113,4 +120,6 @@ int main() {
     test_x();
     test_xx();
     test_per();
+    // bonus
+    test_width();
 }
