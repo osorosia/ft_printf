@@ -117,6 +117,24 @@ void test_minus() {
     CASE("minus"); P("[%-1s]", "aiueo");
 }
 
+void test_zero() {
+    INIT();
+    CASE("zero"); P("[%010c]", 'a');
+    CASE("zero"); P("[%010s]", "aiueo");
+    CASE("zero"); P("[%010s]", "aiueo");
+    CASE("zero"); P("[%01s]", "aiueo");
+    CASE("zero"); P("[%01d]", 100);
+    CASE("zero"); P("[%010d]", 100);
+    CASE("zero_minus"); P("[%-010c]", 'a');
+    CASE("zero_minus"); P("[%-010s]", "aiueo");
+    CASE("zero_minus"); P("[%--010s]", "aiueo");
+    CASE("zero_minus"); P("[%-01s]", "aiueo");
+    CASE("zero_minus"); P("[%-01d]", 100);
+    CASE("zero_minus"); P("[%-010d]", 100);
+    CASE("zero_minus"); P("[%0-1d]", 100);
+    CASE("zero_minus"); P("[%0-10d]", 100);
+}
+
 int main() {
     test_normal();
     test_c();
@@ -131,4 +149,5 @@ int main() {
     // bonus
     test_width();
     test_minus();
+    test_zero();
 }
