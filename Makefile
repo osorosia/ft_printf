@@ -6,7 +6,7 @@
 #    By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 21:42:31 by rnishimo          #+#    #+#              #
-#    Updated: 2021/12/03 10:56:11 by rnishimo         ###   ########.fr        #
+#    Updated: 2021/12/03 11:01:00 by rnishimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,8 @@ fclean: clean
 	$(RM) $(OBJS)
 
 re: fclean all
+
+bonus: all
 
 t: all
 	cd test && bash test.sh
