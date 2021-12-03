@@ -6,13 +6,13 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:39:45 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/03 08:54:28 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/03 09:57:07 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnstr_fd(char *str, size_t n, int fd)
+static void	_putnstr_fd(char *str, size_t n, int fd)
 {
 	if (fd < 0)
 		return ;
@@ -39,18 +39,48 @@ static void	parse_conversion(const char **format, va_list ap, t_str *st_str)
 		get_per(st_str);
 }
 
+static void	parse_flag(const char **format, t_flag *st_flag)
+{
+	if (ft_strchr("123456789", **format))
+	{
+		st_flag->width = (size_t)ft_atoi(*format);
+		while (ft_isdigit(**format))
+			(*format)++;
+	}
+}
+
+static size_t	_print(t_str st_str, t_flag st_flag)
+{
+	size_t	print_size;
+
+	print_size = 0;
+	while (st_flag.width-- > st_str.size)
+	{
+		ft_putchar_fd(' ', 1);
+		print_size++;
+	}
+	_putnstr_fd(st_str.str, st_str.size, 1);
+	print_size += st_str.size;
+	return (print_size);
+}
+
 size_t	parse_format(const char **format, va_list ap)
 {
 	t_str	st_str;
+	t_flag	st_flag;
+	size_t	print_size;
 
 	st_str.str = NULL;
+	st_flag.width = 0;
 	(*format)++;
+	if (ft_strchr("123456789", **format))
+		parse_flag(format, &st_flag);
 	if (ft_strchr("cspdiuxX%", **format))
 		parse_conversion(format, ap, &st_str);
 	if (st_str.str == NULL)
 		return ((size_t)SIZE_MAX);
 	(*format)++;
-	ft_putnstr_fd(st_str.str, st_str.size, STDOUT_FILENO);
+	print_size = _print(st_str, st_flag);
 	free(st_str.str);
-	return (st_str.size);
+	return (print_size);
 }
