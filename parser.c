@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:39:45 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/03 10:06:45 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/03 10:08:32 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	parse_conversion(const char **format, va_list ap, t_str *st_str)
 
 static void	parse_flag(const char **format, t_flag *st_flag)
 {
-	if (**format == '-')
+	while (**format == '-')
 	{
 		st_flag->minus = true;
 		(*format)++;

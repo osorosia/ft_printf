@@ -113,6 +113,7 @@ void test_minus() {
     INIT();
     CASE("minus"); P("[%-10c]", 'a');
     CASE("minus"); P("[%-10s]", "aiueo");
+    CASE("minus"); P("[%--10s]", "aiueo");
     CASE("minus"); P("[%-1s]", "aiueo");
 }
 
