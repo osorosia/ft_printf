@@ -6,13 +6,13 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 16:53:50 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/04 08:38:47 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/04 08:47:29 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static size_t	_calc_print_size(size_t print_size, size_t pre_size)
+static size_t	_add_and_check_overflow(size_t print_size, size_t pre_size)
 {
 	if (print_size > (size_t)SIZE_MAX - pre_size)
 		return ((size_t)SIZE_MAX);
@@ -45,7 +45,7 @@ static int	_vprintf(const char *format, va_list ap)
 			init_struct(&st_str, &st_flag);
 			parse(&format, ap, &st_str, &st_flag);
 			pre_size = print(&st_str, &st_flag);
-			print_size = _calc_print_size(print_size, pre_size);
+			print_size = _add_and_check_overflow(print_size, pre_size);
 		}
 		else
 		{
