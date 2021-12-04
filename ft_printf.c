@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 16:53:50 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/03 09:00:41 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/04 08:38:47 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,32 @@ static size_t	_calc_print_size(size_t print_size, size_t pre_size)
 	return (print_size + pre_size);
 }
 
+void init_struct(t_str *st_str, t_flag *st_flag)
+{
+	st_str->str = NULL;
+	st_str->minus = false;
+	st_str->size = 0;
+	st_flag->width = 0;
+	st_flag->precision = 0;
+	st_flag->minus = false;
+	st_flag->zero = false;
+}
+
 static int	_vprintf(const char *format, va_list ap)
 {
 	size_t	print_size;
 	size_t	pre_size;
+	t_str	st_str;	
+	t_flag	st_flag;	
 
 	print_size = 0;
 	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
-			pre_size = parse_format(&format, ap);
+			init_struct(&st_str, &st_flag);
+			parse(&format, ap, &st_str, &st_flag);
+			pre_size = print(&st_str, &st_flag);
 			print_size = _calc_print_size(print_size, pre_size);
 		}
 		else

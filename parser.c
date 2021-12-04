@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:39:45 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/04 08:11:21 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/04 08:33:30 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,28 +56,14 @@ static void	parse_flag(const char **format, t_flag *st_flag)
 	}
 }
 
-size_t	parse_format(const char **format, va_list ap)
+void	parse(const char **format, va_list ap, t_str *st_str, t_flag *st_flag)
 {
-	t_str	st_str;
-	t_flag	st_flag;
-	size_t	print_size;
-
-	st_str.str = NULL;
-	st_str.minus = false;
-	st_str.size = 0;
-	st_flag.width = 0;
-	st_flag.precision = 0;
-	st_flag.minus = false;
-	st_flag.zero = false;
 	(*format)++;
 	if (ft_strchr("0-123456789", **format))
-		parse_flag(format, &st_flag);
+		parse_flag(format, st_flag);
 	if (ft_strchr("cspdiuxX%", **format))
-		parse_conversion(format, ap, &st_str);
-	if (st_str.str == NULL)
-		return ((size_t)SIZE_MAX);
+		parse_conversion(format, ap, st_str);
+	if (st_str->str == NULL)
+		return ;
 	(*format)++;
-	print_size = print(st_str, st_flag);
-	free(st_str.str);
-	return (print_size);
 }
