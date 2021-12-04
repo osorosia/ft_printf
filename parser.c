@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:39:45 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/04 08:33:30 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/04 08:49:23 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	parse_flag(const char **format, t_flag *st_flag)
 void	parse(const char **format, va_list ap, t_str *st_str, t_flag *st_flag)
 {
 	(*format)++;
-	if (ft_strchr("0-123456789", **format))
+	if (ft_strchr("0-.123456789", **format))
 		parse_flag(format, st_flag);
 	if (ft_strchr("cspdiuxX%", **format))
 		parse_conversion(format, ap, st_str);
