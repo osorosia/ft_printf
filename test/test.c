@@ -123,6 +123,8 @@ void test_zero() {
     CASE("zero"); P("[%01d]", 100);
     CASE("zero"); P("[%010d]", 100);
     CASE("zero"); P("[%04d]", -14);
+    CASE("zero"); P("[%04p]", 14);
+    CASE("zero"); P("[%010p]", 14);
     CASE("zero_minus"); P("[%--010s]", "aiueo");
     CASE("zero_minus"); P("[%-01s]", "aiueo");
     CASE("zero_minus"); P("[%-01d]", 100);
@@ -132,11 +134,28 @@ void test_zero() {
     CASE("zero_minus"); P("[%0--10d]", 100);
 }
 
-// void test_dot() {
-//     INIT();
-//     CASE("dot"); P("[%10.6d]", 100);
-//     CASE("dot"); P("[%10.6d]", -100);
-// }
+void test_dot() {
+    INIT();
+    // d
+    CASE("dot_d"); P("[%10.6d]", 100);
+    CASE("dot_d"); P("[%10.6d]", -100);
+    CASE("dot_d"); P("[%10.1d]", 100);
+    CASE("dot_d"); P("[%10.1d]", -100);
+    CASE("dot_d"); P("[%10.d]", 100);
+    CASE("dot_d"); P("[%10.d]", -100);
+    CASE("dot_d"); P("[%1.d]", 100);
+    CASE("dot_d"); P("[%1.d]", -100);
+    CASE("dot_d"); P("[%.6d]", 100);
+    CASE("dot_d"); P("[%.6d]", -100);
+    CASE("dot_d"); P("[%.1d]", 100);
+    CASE("dot_d"); P("[%.1d]", -100);
+    // p
+    CASE("dot_p"); P("[%10.1p]", 100);
+    CASE("dot_p"); P("[%10.6p]", 100);
+    // s
+    CASE("dot_s"); P("[%10.6s]", "aiueo");
+    CASE("dot_s"); P("[%10.1s]", "aiueo");
+}
 
 int main() {
     test_normal();
@@ -153,5 +172,5 @@ int main() {
     test_width();
     test_minus();
     test_zero();
-    // test_dot();
+    test_dot();
 }

@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:39:45 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/03 19:27:17 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/04 08:11:21 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ static void	parse_flag(const char **format, t_flag *st_flag)
 		while (ft_isdigit(**format))
 			(*format)++;
 	}
+	if (**format == '.')
+	{
+		(*format)++;
+		while (ft_isdigit(**format))
+			(*format)++;
+	}
 }
 
 size_t	parse_format(const char **format, va_list ap)
@@ -60,6 +66,7 @@ size_t	parse_format(const char **format, va_list ap)
 	st_str.minus = false;
 	st_str.size = 0;
 	st_flag.width = 0;
+	st_flag.precision = 0;
 	st_flag.minus = false;
 	st_flag.zero = false;
 	(*format)++;
