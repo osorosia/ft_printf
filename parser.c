@@ -6,13 +6,13 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:39:45 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/04 08:49:23 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/04 09:18:07 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	parse_conversion(const char **format, va_list ap, t_str *st_str)
+static void	parse_specifier(const char **format, va_list ap, t_str *st_str)
 {
 	if (**format == 'c')
 		get_c(ap, st_str);
@@ -32,6 +32,17 @@ static void	parse_conversion(const char **format, va_list ap, t_str *st_str)
 		get_per(st_str);
 }
 
+static void	parse_precision(const char **format, t_flag *st_flag)
+{
+	(void)st_flag;
+	if (**format == '.')
+	{
+		(*format)++;
+		while (ft_isdigit(**format))
+			(*format)++;
+	}
+}
+
 static void	parse_flag(const char **format, t_flag *st_flag)
 {
 	while (ft_strchr("-0", **format))
@@ -42,15 +53,13 @@ static void	parse_flag(const char **format, t_flag *st_flag)
 			st_flag->zero = true;
 		(*format)++;
 	}
+}
+
+static void parse_width(const char **format, t_flag *st_flag)
+{
 	if (ft_strchr("123456789", **format))
 	{
 		st_flag->width = (size_t)ft_atoi(*format);
-		while (ft_isdigit(**format))
-			(*format)++;
-	}
-	if (**format == '.')
-	{
-		(*format)++;
 		while (ft_isdigit(**format))
 			(*format)++;
 	}
@@ -59,10 +68,14 @@ static void	parse_flag(const char **format, t_flag *st_flag)
 void	parse(const char **format, va_list ap, t_str *st_str, t_flag *st_flag)
 {
 	(*format)++;
-	if (ft_strchr("0-.123456789", **format))
+	if (ft_strchr("0-", **format))
 		parse_flag(format, st_flag);
+	if (ft_strchr("123456789", **format))
+		parse_width(format, st_flag);
+	if (ft_strchr(".", **format))
+		parse_precision(format, st_flag);
 	if (ft_strchr("cspdiuxX%", **format))
-		parse_conversion(format, ap, st_str);
+		parse_specifier(format, ap, st_str);
 	if (st_str->str == NULL)
 		return ;
 	(*format)++;
