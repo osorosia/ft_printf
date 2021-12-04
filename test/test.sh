@@ -9,5 +9,5 @@ gcc test.c ../libftprintf.a
 ./a.out > expect.txt
 
 echo ------start------
-diff --text actual.txt expect.txt
+diff --text -U 0 actual.txt expect.txt
 echo -------end-------
