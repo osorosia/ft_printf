@@ -115,6 +115,7 @@ void test_minus() {
     CASE("minus"); P("[%-10s]", "aiueo");
     CASE("minus"); P("[%--10s]", "aiueo");
     CASE("minus"); P("[%-1s]", "aiueo");
+    CASE("minus"); P("[%-2p]", 1);
 }
 
 void test_zero() {

@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 19:24:59 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/08 13:13:15 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/08 13:36:08 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 static void	_print_space(t_str *st_str, t_flag *st_flag, size_t *print_size)
 {
-	if (st_flag->width > 0 && st_str->minus)
-		st_flag->width--;
-	while (st_flag->width-- > st_str->size)
+	(void)st_str;
+	while (st_flag->width > *print_size)
 	{
 		ft_putchar_fd(' ', 1);
 		(*print_size)++;
