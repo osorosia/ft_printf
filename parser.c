@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:39:45 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/04 09:18:07 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/04 09:55:07 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	parse_specifier(const char **format, va_list ap, t_str *st_str)
 {
+	st_str->specifier = **format;
 	if (**format == 'c')
 		get_c(ap, st_str);
 	if (**format == 's')

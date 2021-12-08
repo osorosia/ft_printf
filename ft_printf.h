@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 17:03:18 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/04 08:29:14 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/04 09:55:19 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_str
 	char	*str;
 	size_t	size;
 	bool	minus;
+	char	specifier;
 }	t_str;
 
 typedef struct s_flag

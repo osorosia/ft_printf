@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 16:53:50 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/04 08:47:29 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/04 09:55:45 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void init_struct(t_str *st_str, t_flag *st_flag)
 	st_str->str = NULL;
 	st_str->minus = false;
 	st_str->size = 0;
+	st_str->specifier = '\0';
 	st_flag->width = 0;
 	st_flag->precision = 0;
 	st_flag->minus = false;
