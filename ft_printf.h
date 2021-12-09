@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 17:03:18 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/09 09:47:53 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/09 11:33:55 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_flag
 	size_t	precision;
 	bool	minus;
 	bool	zero;
+	bool	dot;
 }	t_flag;
 
 typedef struct s_print

@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 16:53:50 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/04 09:55:45 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/09 11:35:08 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,8 @@ static size_t	_add_and_check_overflow(size_t print_size, size_t pre_size)
 
 void init_struct(t_str *st_str, t_flag *st_flag)
 {
-	st_str->str = NULL;
-	st_str->minus = false;
-	st_str->size = 0;
-	st_str->specifier = '\0';
-	st_flag->width = 0;
-	st_flag->precision = 0;
-	st_flag->minus = false;
-	st_flag->zero = false;
+	ft_memset(st_str, 0, sizeof(t_str));
+	ft_memset(st_flag, 0, sizeof(t_flag));
 }
 
 static int	_vprintf(const char *format, va_list ap)
