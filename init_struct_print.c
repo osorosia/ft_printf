@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:50:20 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/09 10:32:09 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/09 10:36:59 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static size_t	_get_size_of_zero(t_print *st_print, t_str *st_str, t_flag *st_fla
 	size_t	zero_size;
 	size_t	other_size;
 
+	if (st_flag->minus)
+		return (0);
 	(void)st_str;
 	(void)st_flag;
 	zero_size = 0;
