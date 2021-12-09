@@ -127,6 +127,16 @@ void test_width() {
     CASE("width"); P("[%10c]", 'a');
     CASE("width"); P("[%10s]", "aiueo");
     CASE("width"); P("[%1s]", "aiueo");
+    SUB();
+    CASE("width_all"); P("[%10c]", 'a');
+    CASE("width_all"); P("[%10s]", "aiueo");
+    CASE("width_all"); P("[%10p]", (void *)1);
+    CASE("width_all"); P("[%10d]", -14);
+    CASE("width_all"); P("[%10i]", -14);
+    CASE("width_all"); P("[%10u]", 14);
+    CASE("width_all"); P("[%10x]", 14);
+    CASE("width_all"); P("[%10X]", 14);
+    CASE("width_all"); P("[%10%]");
 }
 
 void test_minus() {
