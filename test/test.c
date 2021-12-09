@@ -194,11 +194,22 @@ void test_dot() {
     CASE("dot_d"); P("[%.1d]", 100);
     CASE("dot_d"); P("[%.1d]", -100);
     // p
+    SUB();
     CASE("dot_p"); P("[%10.1p]", 100);
     CASE("dot_p"); P("[%10.6p]", 100);
     // s
+    SUB();
     CASE("dot_s"); P("[%10.6s]", "aiueo");
     CASE("dot_s"); P("[%10.1s]", "aiueo");
+    // u
+    SUB();
+    CASE("dot_u"); P("[%.6u]", 100);
+    // x
+    SUB();
+    CASE("dot_x"); P("[%.6x]", 100);
+    // X
+    SUB();
+    CASE("dot_X"); P("[%.6X]", 100);
 }
 
 void test_plus() {
