@@ -161,6 +161,22 @@ void test_minus() {
     CASE("minus"); P("[%--10s]", "aiueo");
     CASE("minus"); P("[%-1s]", "aiueo");
     CASE("minus"); P("[%-2p]", 1);
+    CASE("minus"); P("[%-d]", 0);
+    CASE("minus"); P("[%-d]", INT_MAX);
+    CASE("minus"); P("[%-d]", INT_MIN);
+    CASE("minus"); P("[%-i]", 0);
+    CASE("minus"); P("[%-i]", INT_MAX);
+    CASE("minus"); P("[%-i]", INT_MIN);
+    SUB();
+    CASE("minus_all"); P("[%-c]", 'a');
+    CASE("minus_all"); P("[%-s]", "aiueo");
+    CASE("minus_all"); P("[%-p]", (void *)1);
+    CASE("minus_all"); P("[%-d]", -14);
+    CASE("minus_all"); P("[%-i]", -14);
+    CASE("minus_all"); P("[%-u]", 14);
+    CASE("minus_all"); P("[%-x]", 14);
+    CASE("minus_all"); P("[%-X]", 14);
+    CASE("minus_all"); P("[%-%]");
     SUB();
     CASE("minus_1"); P("[%-1c]", 'a');
     CASE("minus_1"); P("[%-1s]", "aiueo");
@@ -189,6 +205,10 @@ void test_zero() {
     CASE("zero"); P("[%01d]", 100);
     CASE("zero"); P("[%010d]", 100);
     CASE("zero"); P("[%04d]", -14);
+    CASE("zero"); P("[%04d]", 0);
+    CASE("zero"); P("[%04d]", INT_MAX);
+    CASE("zero"); P("[%04d]", INT_MIN);
+    CASE("zero"); P("[%04d]", (long)INT_MAX + 1);
     CASE("zero"); P("[%04p]", 14);
     CASE("zero"); P("[%010p]", 14);
     SUB();
@@ -375,6 +395,54 @@ void test_plus() {
     CASE("plus_per"); P("[%+%]");
 }
 
+void test_special()
+{
+    INIT();
+    SUB();
+    CASE("special_[.010]"); P("[%.010c]", 'a');
+    CASE("special_[.010]"); P("[%.010s]", "aiueo");
+    CASE("special_[.010]"); P("[%.010p]", (void *)1);
+    CASE("special_[.010]"); P("[%.010d]", -14);
+    CASE("special_[.010]"); P("[%.010i]", -14);
+    CASE("special_[.010]"); P("[%.010u]", 14);
+    CASE("special_[.010]"); P("[%.010x]", 14);
+    CASE("special_[.010]"); P("[%.010X]", 14);
+    CASE("special_[.010]"); P("[%.010%]");
+    SUB();
+    CASE("special_[.01]"); P("[%.01c]", 'a');
+    CASE("special_[.01]"); P("[%.01s]", "aiueo");
+    CASE("special_[.01]"); P("[%.01p]", (void *)1);
+    CASE("special_[.01]"); P("[%.01d]", -14);
+    CASE("special_[.01]"); P("[%.01i]", -14);
+    CASE("special_[.01]"); P("[%.01u]", 14);
+    CASE("special_[.01]"); P("[%.01x]", 14);
+    CASE("special_[.01]"); P("[%.01X]", 14);
+    CASE("special_[.01]"); P("[%.01%]");
+    SUB();
+    CASE("special_[10.06]"); P("[%10.06c]", 'a');
+    CASE("special_[10.06]"); P("[%10.06s]", "aiueo");
+    CASE("special_[10.06]"); P("[%10.06p]", (void *)1);
+    CASE("special_[10.06]"); P("[%10.06d]", -14);
+    CASE("special_[10.06]"); P("[%10.06i]", -14);
+    CASE("special_[10.06]"); P("[%10.06u]", 14);
+    CASE("special_[10.06]"); P("[%10.06x]", 14);
+    CASE("special_[10.06]"); P("[%10.06X]", 14);
+    SUB();
+    CASE("special_[# 0-10.06]"); P("[% 0-10.06c]", 'a');
+    CASE("special_[# 0-10.06]"); P("[% 0-10.06s]", "aiueo");
+    CASE("special_[# 0-10.06]"); P("[% 0-10.06p]", (void *)1);
+    CASE("special_[# 0-10.06]"); P("[% 0-10.06d]", -14);
+    CASE("special_[# 0-10.06]"); P("[% 0-10.06i]", -14);
+    CASE("special_[# 0-10.06]"); P("[% 0-10.06u]", 14);
+    CASE("special_[# 0-10.06]"); P("[% 0-10.06x]", 14);
+    CASE("special_[# 0-10.06]"); P("[% 0-10.06X]", 14);
+}
+
+void test_error()
+{
+    INIT();
+}
+
 int main() {
     test_normal();
     test_c();
@@ -394,4 +462,7 @@ int main() {
     test_sharp();
     test_space();
     test_plus();
+    // other
+    test_special();
+    test_error();
 }
