@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 17:03:18 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/09 07:58:22 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/09 09:47:53 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_print
 // main
 int		ft_printf(const char *format, ...);
 size_t	print(t_str *st_str, t_flag *st_flag);
+t_print	init_struct_print(t_str *st_str, t_flag *st_flag);
 
 // parser
 void	parse(const char **format, va_list ap, t_str *st_str, t_flag *st_flag);

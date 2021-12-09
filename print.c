@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 19:24:59 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/09 09:17:43 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/09 09:49:50 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,28 +43,6 @@ static void	_print_sign_hex(t_str *st_str, t_print *st_print)
 		ft_putstr_fd("0x", STDOUT_FILENO);
 }
 
-static t_print	_init_t_print(t_str *st_str, t_flag *st_flag)
-{
-	t_print	st_print;
-
-	st_print.size = st_str->size;
-	st_print.space = 0;
-	st_print.zero = 0;
-	st_print.sign = 0;
-	st_print.hex = 0;
-	if (st_flag->precision > 0
-		&& st_print.size > st_flag->precision
-		&& ft_strchr("s", st_str->specifier))
-		st_print.size = st_flag->precision;
-	if (st_str->minus)
-		st_print.sign = 1;
-	if (st_str->specifier == 'p')
-		st_print.hex = 2;
-	if (st_flag->width > st_print.size + st_print.sign + st_print.hex)
-		st_print.space = st_flag->width - (st_print.size + st_print.sign + st_print.hex);
-	return (st_print);
-}
-
 size_t	_print_size(t_print *st_print)
 {
 	size_t	print_size;
@@ -81,7 +59,7 @@ size_t	print(t_str *st_str, t_flag *st_flag)
 {
 	t_print	st_print;
 
-	st_print = _init_t_print(st_str, st_flag);
+	st_print = init_struct_print(st_str, st_flag);
 	if (st_str->str == NULL)
 		return ((size_t)SIZE_MAX);
 	if (!st_flag->minus)
