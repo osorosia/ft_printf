@@ -34,6 +34,7 @@
 #endif
 
 #define INIT() int ret=0; int test_case=0;
+#define SUB() test_case=0;
 
 int printf_linux(const char *format, ...)
 {
@@ -142,16 +143,17 @@ void test_zero() {
     CASE("zero"); P("[%04d]", -14);
     CASE("zero"); P("[%04p]", 14);
     CASE("zero"); P("[%010p]", 14);
-    CASE("zero"); P("[%010c]", 'a');
-    CASE("zero"); P("[%010s]", "aiueo");
-    CASE("zero"); P("[%010p]", (void *)1);
-    CASE("zero"); P("[%010d]", -14);
-    CASE("zero"); P("[%010i]", -14);
-    CASE("zero"); P("[%010u]", 14);
-    CASE("zero"); P("[%010x]", 14);
-    CASE("zero"); P("[%010X]", 14);
-    CASE("zero"); P("[%010%]");
-
+    SUB();
+    CASE("zero_all"); P("[%010c]", 'a');
+    CASE("zero_all"); P("[%010s]", "aiueo");
+    CASE("zero_all"); P("[%010p]", (void *)1);
+    CASE("zero_all"); P("[%010d]", -14);
+    CASE("zero_all"); P("[%010i]", -14);
+    CASE("zero_all"); P("[%010u]", 14);
+    CASE("zero_all"); P("[%010x]", 14);
+    CASE("zero_all"); P("[%010X]", 14);
+    CASE("zero_all"); P("[%010%]");
+    SUB();
     CASE("zero_minus"); P("[%--010s]", "aiueo");
     CASE("zero_minus"); P("[%-01s]", "aiueo");
     CASE("zero_minus"); P("[%-01d]", 100);
