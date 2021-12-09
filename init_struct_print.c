@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:50:20 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/09 10:36:59 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/09 11:17:09 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,12 @@ static size_t	_get_size_of_zero(t_print *st_print, t_str *st_str, t_flag *st_fla
 	other_size = st_print->size;
 	other_size += st_print->sign;
 	other_size += st_print->hex;
-	if (st_flag->zero && st_flag->width > other_size )
+	if (st_flag->precision && ft_strchr("dip", st_str->specifier)
+		&& st_flag->precision > st_str->size)
+		zero_size = st_flag->precision - st_str->size;
+	if (st_flag->zero
+		&& st_flag->width > other_size
+		&& zero_size < st_flag->width - other_size)
 		zero_size = st_flag->width - other_size;
 	return (zero_size);
 }
