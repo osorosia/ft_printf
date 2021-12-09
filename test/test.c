@@ -16,7 +16,7 @@
         ft_putchar_fd(':', 1); \
         test_case++
     #define SUB() test_case=0; \
-        ft_putstr_fd("------\n", 1) 
+        ft_putstr_fd("\n------\n\n", 1) 
 #else
     #ifdef __linux__
         #define P_FT(...)
@@ -34,10 +34,10 @@
         printf("%s_%d:", s, test_case); \
         test_case++
     #define SUB() test_case=0; \
-        printf("------\n") 
+        printf("\n------\n\n") 
 #endif
 
-#define INIT() int ret=0; int test_case=0;
+#define INIT() int ret=0; int test_case=0; SUB()
 
 int printf_linux(const char *format, ...)
 {
