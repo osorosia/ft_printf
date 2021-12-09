@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:50:20 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/09 11:24:24 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/09 11:28:34 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ static size_t	_get_size_of_zero(t_print *st_print, t_str *st_str, t_flag *st_fla
 
 	if (st_flag->minus)
 		return (0);
-	(void)st_str;
-	(void)st_flag;
 	zero_size = 0;
 	other_size = st_print->size;
 	other_size += st_print->sign;
@@ -53,7 +51,10 @@ static size_t	_get_size_of_zero(t_print *st_print, t_str *st_str, t_flag *st_fla
 
 static size_t	_get_base_size(t_str *st_str, t_flag *st_flag)
 {
-	(void)st_flag;
+	if (st_flag->precision
+		&& st_str->specifier == 's'
+		&& st_str->size > st_flag->precision)
+		return (st_flag->precision);
 	return (st_str->size);
 }
 
