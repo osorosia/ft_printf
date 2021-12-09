@@ -142,6 +142,16 @@ void test_zero() {
     CASE("zero"); P("[%04d]", -14);
     CASE("zero"); P("[%04p]", 14);
     CASE("zero"); P("[%010p]", 14);
+    CASE("zero"); P("[%010c]", 'a');
+    CASE("zero"); P("[%010s]", "aiueo");
+    CASE("zero"); P("[%010p]", (void *)1);
+    CASE("zero"); P("[%010d]", -14);
+    CASE("zero"); P("[%010i]", -14);
+    CASE("zero"); P("[%010u]", 14);
+    CASE("zero"); P("[%010x]", 14);
+    CASE("zero"); P("[%010X]", 14);
+    CASE("zero"); P("[%010%]");
+
     CASE("zero_minus"); P("[%--010s]", "aiueo");
     CASE("zero_minus"); P("[%-01s]", "aiueo");
     CASE("zero_minus"); P("[%-01d]", 100);
