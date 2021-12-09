@@ -6,17 +6,21 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:50:20 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/09 12:57:33 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/09 13:09:14 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static size_t	_get_size_of_space(t_print *st_print, t_str *st_str, t_flag *st_flag)
+static size_t	_get_size_of_space(
+	t_print *st_print,
+	t_str *st_str,
+	t_flag *st_flag
+)
 {
 	size_t	space_size;
 	size_t	other_size;
-	
+
 	(void)st_str;
 	space_size = 0;
 	other_size = st_print->size;
@@ -28,7 +32,11 @@ static size_t	_get_size_of_space(t_print *st_print, t_str *st_str, t_flag *st_fl
 	return (space_size);
 }
 
-static size_t	_get_size_of_zero(t_print *st_print, t_str *st_str, t_flag *st_flag)
+static size_t	_get_size_of_zero(
+	t_print *st_print,
+	t_str *st_str,
+	t_flag *st_flag
+)
 {
 	size_t	zero_size;
 	size_t	other_size;
@@ -72,7 +80,9 @@ t_print	init_struct_print(t_str *st_str, t_flag *st_flag)
 		st_print.sign = 1;
 	if (st_str->specifier == 'p')
 		st_print.hex = 2;
-	else if (st_flag->sharp && ft_strchr("xX", st_str->specifier) && st_str->str[0] != '0')
+	else if (st_flag->sharp
+		&& ft_strchr("xX", st_str->specifier)
+		&& st_str->str[0] != '0')
 		st_print.hex = 2;
 	st_print.zero = _get_size_of_zero(&st_print, st_str, st_flag);
 	st_print.space = _get_size_of_space(&st_print, st_str, st_flag);

@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:39:45 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/09 12:55:22 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/09 13:07:04 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	parse_flag(const char **format, t_flag *st_flag)
 	}
 }
 
-static void parse_width(const char **format, t_flag *st_flag)
+static void	parse_width(const char **format, t_flag *st_flag)
 {
 	if (ft_strchr("123456789", **format))
 	{

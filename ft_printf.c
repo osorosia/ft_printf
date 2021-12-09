@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 16:53:50 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/09 11:35:08 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/09 13:09:34 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static size_t	_add_and_check_overflow(size_t print_size, size_t pre_size)
 	return (print_size + pre_size);
 }
 
-void init_struct(t_str *st_str, t_flag *st_flag)
+void	init_struct(t_str *st_str, t_flag *st_flag)
 {
 	ft_memset(st_str, 0, sizeof(t_str));
 	ft_memset(st_flag, 0, sizeof(t_flag));
