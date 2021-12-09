@@ -63,6 +63,7 @@ void test_s() {
 
 void test_p() {
     INIT();
+    CASE("p"); P("%p", (void *)0);
     CASE("p"); P("%p", (void *)5);
     CASE("p"); P("%p", (void *)12);
     CASE("p"); P("%p", (void *)12);
@@ -218,14 +219,25 @@ void test_dot() {
 
 void test_sharp() {
     INIT();
+    SUB();
     CASE("sharp_c"); P("[%#x]", 'a');
+    SUB();
     CASE("sharp_s"); P("[%#s]", "aiueo");
+    SUB();
     CASE("sharp_p"); P("[%#p]", 100);
+    SUB();
     CASE("sharp_d"); P("[%#d]", 100);
+    SUB();
     CASE("sharp_i"); P("[%#i]", 100);
+    SUB();
     CASE("sharp_u"); P("[%#u]", 100);
+    SUB();
+    CASE("sharp_x"); P("[%#x]", 0);
     CASE("sharp_x"); P("[%#x]", 100);
+    SUB();
+    CASE("sharp_X"); P("[%#X]", 0);
     CASE("sharp_X"); P("[%#X]", 100);
+    SUB();
     CASE("sharp_per"); P("[%#%]");
 }
 
