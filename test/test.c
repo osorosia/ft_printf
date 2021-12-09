@@ -228,7 +228,7 @@ void test_zero() {
     CASE("zero_-010"); P("[%-010u]", 14);
     CASE("zero_-010"); P("[%-010x]", 14);
     CASE("zero_-010"); P("[%-010X]", 14);
-    CASE("zero_-010"); P("[%-010%]");
+    CASE("zero_-010"); P_FT("[%-010%]"); P_LINUX("[%%         ]");
     SUB();
     CASE("zero_0-10"); P("[%0-10c]", 'a');
     CASE("zero_0-10"); P("[%0-10s]", "aiueo");
@@ -238,17 +238,17 @@ void test_zero() {
     CASE("zero_0-10"); P("[%0-10u]", 14);
     CASE("zero_0-10"); P("[%0-10x]", 14);
     CASE("zero_0-10"); P("[%0-10X]", 14);
-    CASE("zero_0-10"); P("[%0-10%]");
+    CASE("zero_0-10"); P_FT("[%0-10%]"); P_LINUX("[%%         ]");
     SUB();
-    CASE("zero_010"); P("[%010c]", 'a');
-    CASE("zero_010"); P("[%010s]", "aiueo");
+    CASE("zero_010"); P_FT("[%010c]", 'a'); P_LINUX("[000000000a]");
+    CASE("zero_010"); P_FT("[%010s]", "aiueo"); P_LINUX("[00000aiueo]");
     CASE("zero_010"); P("[%010p]", (void *)1);
     CASE("zero_010"); P("[%010d]", -14);
     CASE("zero_010"); P("[%010i]", -14);
     CASE("zero_010"); P("[%010u]", 14);
     CASE("zero_010"); P("[%010x]", 14);
     CASE("zero_010"); P("[%010X]", 14);
-    CASE("zero_010"); P("[%010%]");
+    CASE("zero_010"); P_FT("[%010%]"); P_LINUX("[000000000%%]");
 }
 
 void test_dot() {
