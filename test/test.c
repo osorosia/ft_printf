@@ -203,6 +203,7 @@ void test_dot() {
     CASE("dot_s"); P("[%10.1s]", "aiueo");
     CASE("dot_s"); P("[%.1s]", "aiueo");
     CASE("dot_s"); P("[%.6s]", "aiueo");
+    CASE("dot_s"); P("[%.s]", "aiueo");
     // u
     SUB();
     CASE("dot_u"); P("[%.6u]", 100);
