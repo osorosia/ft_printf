@@ -220,7 +220,7 @@ void test_dot() {
 void test_sharp() {
     INIT();
     SUB();
-    CASE("sharp_c"); P("[%#x]", 'a');
+    CASE("sharp_c"); P("[%#c]", 'a');
     SUB();
     CASE("sharp_s"); P("[%#s]", "aiueo");
     SUB();
@@ -239,6 +239,36 @@ void test_sharp() {
     CASE("sharp_X"); P("[%#X]", 100);
     SUB();
     CASE("sharp_per"); P("[%#%]");
+}
+
+void test_space() {
+    INIT();
+    SUB();
+    CASE("space_c"); P("[% c]", 'a');
+    SUB();
+    CASE("space_s"); P("[% s]", "aiueo");
+    SUB();
+    CASE("space_p"); P("[% p]", 0);
+    CASE("space_p"); P("[% p]", 100);
+    SUB();
+    CASE("space_d"); P("[% d]", 0);
+    CASE("space_d"); P("[% d]", -100);
+    CASE("space_d"); P("[% d]", 100);
+    SUB();
+    CASE("space_i"); P("[% i]", 0);
+    CASE("space_i"); P("[% i]", -100);
+    CASE("space_i"); P("[% i]", 100);
+    SUB();
+    CASE("space_u"); P("[% u]", 0);
+    CASE("space_u"); P("[% u]", 100);
+    SUB();
+    CASE("space_x"); P("[% x]", 0);
+    CASE("space_x"); P("[% x]", 100);
+    SUB();
+    CASE("space_X"); P("[% X]", 0);
+    CASE("space_X"); P("[% X]", 100);
+    SUB();
+    CASE("space_per"); P("[% %]");
 }
 
 void test_plus() {
@@ -269,5 +299,6 @@ int main() {
     test_zero();
     test_dot();
     test_sharp();
+    test_space();
     test_plus();
 }
