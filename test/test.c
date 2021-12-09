@@ -63,7 +63,7 @@ void test_s() {
 
 void test_p() {
     INIT();
-    CASE("p"); P("%p", (void *)0);
+    CASE("p"); P_FT("%p", (void *)0); P_LINUX("0x0");
     CASE("p"); P("%p", (void *)5);
     CASE("p"); P("%p", (void *)12);
     CASE("p"); P("%p", (void *)12);
