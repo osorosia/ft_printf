@@ -144,8 +144,8 @@ void test_zero() {
     CASE("zero"); P("[%04p]", 14);
     CASE("zero"); P("[%010p]", 14);
     SUB();
-    CASE("zero_all"); P("[%010c]", 'a');
-    CASE("zero_all"); P("[%010s]", "aiueo");
+    CASE("zero_all"); P_FT("[%010c]", 'a'); P_LINUX("[000000000a]");
+    CASE("zero_all"); P_FT("[%010s]", "aiueo"); P_LINUX("[00000aiueo]");
     CASE("zero_all"); P("[%010p]", (void *)1);
     CASE("zero_all"); P("[%010d]", -14);
     CASE("zero_all"); P("[%010i]", -14);
