@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 19:24:59 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/09 09:49:50 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/09 10:35:31 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	_print_zero(t_print *st_print)
 	size_t	i;
 
 	i = 0;
-	if (i++ < st_print->zero)
+	while (i++ < st_print->zero)
 		ft_putchar_fd('0', STDOUT_FILENO);
 }
 
