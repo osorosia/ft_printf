@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:50:20 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/09 11:36:02 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/09 11:47:15 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ t_print	init_struct_print(t_str *st_str, t_flag *st_flag)
 	st_print.size = _get_base_size(st_str, st_flag);
 	if (st_str->minus)
 		st_print.sign = 1;
-	if (st_str->specifier == 'p')
+	if (st_str->specifier == 'p'
+		|| (st_flag->sharp && ft_strchr("xX", st_str->specifier)))
 		st_print.hex = 2;
 	st_print.zero = _get_size_of_zero(&st_print, st_str, st_flag);
 	st_print.space = _get_size_of_space(&st_print, st_str, st_flag);

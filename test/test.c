@@ -216,6 +216,19 @@ void test_dot() {
     CASE("dot_X"); P("[%.6X]", 100);
 }
 
+void test_sharp() {
+    INIT();
+    CASE("sharp_c"); P("[%#x]", 'a');
+    CASE("sharp_s"); P("[%#s]", "aiueo");
+    CASE("sharp_p"); P("[%#p]", 100);
+    CASE("sharp_d"); P("[%#d]", 100);
+    CASE("sharp_i"); P("[%#i]", 100);
+    CASE("sharp_u"); P("[%#u]", 100);
+    CASE("sharp_x"); P("[%#x]", 100);
+    CASE("sharp_X"); P("[%#X]", 100);
+    CASE("sharp_per"); P("[%#%]");
+}
+
 void test_plus() {
     INIT();
     CASE("plus_d"); P("[%+d]", 100);
@@ -243,5 +256,6 @@ int main() {
     test_minus();
     test_zero();
     test_dot();
+    test_sharp();
     test_plus();
 }

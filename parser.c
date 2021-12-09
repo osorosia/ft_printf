@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:39:45 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/09 11:35:35 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/09 11:45:28 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,14 @@ static void	parse_precision(const char **format, t_flag *st_flag)
 
 static void	parse_flag(const char **format, t_flag *st_flag)
 {
-	while (ft_strchr("-0", **format))
+	while (ft_strchr("-0#", **format))
 	{
 		if (**format == '-')
 			st_flag->minus = true;
 		if (**format == '0')
 			st_flag->zero = true;
+		if (**format == '#')
+			st_flag->sharp = true;
 		(*format)++;
 	}
 }
@@ -72,7 +74,7 @@ static void parse_width(const char **format, t_flag *st_flag)
 void	parse(const char **format, va_list ap, t_str *st_str, t_flag *st_flag)
 {
 	(*format)++;
-	if (ft_strchr("0-", **format))
+	if (ft_strchr("0-#", **format))
 		parse_flag(format, st_flag);
 	if (ft_strchr("123456789", **format))
 		parse_width(format, st_flag);

@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 19:24:59 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/09 10:35:31 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/09 11:52:43 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ static void	_print_sign_hex(t_str *st_str, t_print *st_print)
 		else
 			ft_putchar_fd('+', STDOUT_FILENO);
 	}
-	if (st_print->hex)
+	if (st_print->hex && st_str->specifier != 'X')
 		ft_putstr_fd("0x", STDOUT_FILENO);
+	if (st_print->hex && st_str->specifier == 'X')
+		ft_putstr_fd("0X", STDOUT_FILENO);
 }
 
 size_t	_print_size(t_print *st_print)
