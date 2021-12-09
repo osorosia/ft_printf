@@ -15,6 +15,8 @@
         ft_putnbr_fd(test_case, 1); \
         ft_putchar_fd(':', 1); \
         test_case++
+    #define SUB() test_case=0; \
+        ft_putstr_fd("------\n", 1) 
 #else
     #ifdef __linux__
         #define P_FT(...)
@@ -31,10 +33,11 @@
     #define CASE(s) \
         printf("%s_%d:", s, test_case); \
         test_case++
+    #define SUB() test_case=0; \
+        printf("------\n") 
 #endif
 
 #define INIT() int ret=0; int test_case=0;
-#define SUB() test_case=0;
 
 int printf_linux(const char *format, ...)
 {
@@ -152,7 +155,7 @@ void test_zero() {
     CASE("zero_all"); P("[%010u]", 14);
     CASE("zero_all"); P("[%010x]", 14);
     CASE("zero_all"); P("[%010X]", 14);
-    CASE("zero_all"); P("[%010%]");
+    CASE("zero_all"); P_FT("[%010%]"); P_LINUX("[000000000%%]");
     SUB();
     CASE("zero_minus"); P("[%--010s]", "aiueo");
     CASE("zero_minus"); P("[%-01s]", "aiueo");
