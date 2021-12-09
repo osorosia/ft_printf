@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:50:20 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/09 12:05:44 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/09 12:24:36 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ t_print	init_struct_print(t_str *st_str, t_flag *st_flag)
 	(void)print_size;
 	ft_memset(&st_print, 0, sizeof(t_print));
 	st_print.size = _get_base_size(st_str, st_flag);
-	if (st_str->minus)
+	if (st_str->minus
+		|| (ft_strchr("di", st_str->specifier) && st_flag->space))
 		st_print.sign = 1;
 	if (st_str->specifier == 'p')
 		st_print.hex = 2;
