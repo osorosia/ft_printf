@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:39:45 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/04 09:55:07 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/08 14:53:43 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static void	parse_precision(const char **format, t_flag *st_flag)
 	if (**format == '.')
 	{
 		(*format)++;
+		if (ft_isdigit(**format))
+			st_flag->precision = (size_t)ft_atoi(*format);
 		while (ft_isdigit(**format))
 			(*format)++;
 	}

@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 17:03:18 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/04 09:55:19 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/09 07:58:22 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,15 @@ typedef struct s_flag
 	bool	minus;
 	bool	zero;
 }	t_flag;
+
+typedef struct s_print
+{
+	size_t	size;
+	size_t	space;
+	size_t	zero;
+	size_t	sign;
+	size_t	hex;
+}	t_print;
 
 // main
 int		ft_printf(const char *format, ...);

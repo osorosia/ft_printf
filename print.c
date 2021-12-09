@@ -6,76 +6,89 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 19:24:59 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/08 13:36:08 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/09 08:34:09 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	_print_space(t_str *st_str, t_flag *st_flag, size_t *print_size)
+static void	_print_space(t_print *st_print)
 {
-	(void)st_str;
-	while (st_flag->width > *print_size)
-	{
-		ft_putchar_fd(' ', 1);
-		(*print_size)++;
-	}
+	size_t	i;
+
+	i = 0;
+	while (i++ < st_print->space)
+		ft_putchar_fd(' ', STDOUT_FILENO);
 }
 
-static void	_print_zero(t_str *st_str, t_flag *st_flag, size_t *print_size)
+static void	_print_zero(t_print *st_print)
 {
-	(void)st_str;
-	if (!st_flag->zero || st_flag->minus)
-		return ;
-	while (st_flag->width > *print_size)
-	{
+	size_t	i;
+
+	i = 0;
+	if (i++ < st_print->zero)
 		ft_putchar_fd('0', STDOUT_FILENO);
-		(*print_size)++;
+}
+
+static void	_print_sign_hex(t_str *st_str, t_print *st_print)
+{
+	if (st_print->sign)
+	{
+		if (st_str->minus)
+			ft_putchar_fd('-', STDOUT_FILENO);
+		else
+			ft_putchar_fd('+', STDOUT_FILENO);
 	}
-}
-
-static void	_print_sign(t_str *st_str, t_flag *st_flag)
-{
-	(void)st_flag;
-	if (st_str->minus)
-		ft_putchar_fd('-', STDOUT_FILENO);
-}
-
-static void _print_hex(t_str *st_str, t_flag *st_flag)
-{
-	(void)st_flag;
-	if (st_str->specifier == 'p')
+	if (st_print->hex)
 		ft_putstr_fd("0x", STDOUT_FILENO);
 }
 
-static size_t	_calc_print_size(t_str *st_str, t_flag *st_flag)
+static t_print	_init_t_print(t_str *st_str, t_flag *st_flag)
+{
+	t_print	st_print;
+
+	st_print.size = st_str->size;
+	st_print.space = 0;
+	st_print.zero = 0;
+	st_print.sign = 0;
+	st_print.hex = 0;
+	if (st_flag->precision > 0
+		&& st_print.size > st_flag->precision
+		&& ft_strchr("s", st_str->specifier))
+		st_print.size = st_flag->precision;
+	if (st_str->minus)
+		st_print.sign = 1;
+	if (st_str->specifier == 'p')
+		st_print.hex = 2;
+	return (st_print);
+}
+
+size_t	_print_size(t_print *st_print)
 {
 	size_t	print_size;
 
-	(void)st_flag;
-	print_size = st_str->size;
-	if (st_str->minus)
-		print_size++;
-	if (st_str->specifier == 'p')
-		print_size += 2;
+	print_size = st_print->size;
+	print_size += st_print->space;
+	print_size += st_print->zero;
+	print_size += st_print->sign;
+	print_size += st_print->hex;
 	return (print_size);
 }
 
 size_t	print(t_str *st_str, t_flag *st_flag)
 {
-	size_t	print_size;
+	t_print	st_print;
 
+	st_print = _init_t_print(st_str, st_flag);
 	if (st_str->str == NULL)
 		return ((size_t)SIZE_MAX);
-	print_size = _calc_print_size(st_str, st_flag);
-	if (!st_flag->minus && !st_flag->zero)
-		_print_space(st_str, st_flag, &print_size);
-	_print_sign(st_str, st_flag);
-	_print_hex(st_str, st_flag);
-	_print_zero(st_str, st_flag, &print_size);
-	ft_putnstr_fd(st_str->str, st_str->size, 1);
+	if (!st_flag->minus)
+		_print_space(&st_print);
+	_print_sign_hex(st_str, &st_print);
+	_print_zero(&st_print);
+	ft_putnstr_fd(st_str->str, st_print.size, STDOUT_FILENO);
 	if (st_flag->minus)
-		_print_space(st_str, st_flag, &print_size);
+		_print_space(&st_print);
 	free(st_str->str);
-	return (print_size);
+	return (_print_size(&st_print));
 }
