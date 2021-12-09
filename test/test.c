@@ -136,7 +136,7 @@ void test_width() {
     CASE("width_all"); P("[%10u]", 14);
     CASE("width_all"); P("[%10x]", 14);
     CASE("width_all"); P("[%10X]", 14);
-    CASE("width_all"); P("[%10%]");
+    CASE("width_all"); P_FT("[%10%]"); P_LINUX("[         %%]");
 }
 
 void test_minus() {
