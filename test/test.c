@@ -2,6 +2,8 @@
 #include "../ft_printf.h"
 
 #ifdef FT
+    #define P_FT(...) P(__VA_ARGS__)
+    #define P_LINUX(...)
     #define P(...) \
         ret = ft_printf(__VA_ARGS__); \
         ft_putstr_fd(",return=", 1); \
@@ -14,6 +16,15 @@
         ft_putchar_fd(':', 1); \
         test_case++
 #else
+    #ifdef __linux__
+        #define P_FT(...)
+        #define P_LINUX(...) \
+            ret = printf_linux(__VA_ARGS__); \
+            printf(",return=%d\n", ret)
+    #else
+        #define P_FT(...) P(__VA_ARGS__)
+        #define P_LINUX(...)
+    #endif
     #define P(...) \
         ret = printf(__VA_ARGS__); \
         printf(",return=%d\n", ret)
@@ -23,6 +34,11 @@
 #endif
 
 #define INIT() int ret=0; int test_case=0;
+
+int printf_linux(const char *format, ...)
+{
+    return printf(format);
+}
 
 void test_normal() {
     INIT();
@@ -166,7 +182,7 @@ void test_plus() {
     CASE("plus_d"); P("[%+d]", -100);
     CASE("plus_d"); P("[%+d]", 0);
     CASE("plus_d"); P("[%+s]", "aiueo");
-    CASE("plus_d"); P("[%+p]", 14);
+    CASE("plus_d"); P_FT("[%+p]", 14); P_LINUX("[0xe]");
     CASE("plus_d"); P("[%+x]", 14);
     CASE("plus_d"); P("[%+X]", 14);
 }
