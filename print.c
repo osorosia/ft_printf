@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 19:24:59 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/09 08:39:32 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/09 09:17:43 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static t_print	_init_t_print(t_str *st_str, t_flag *st_flag)
 	if (st_str->specifier == 'p')
 		st_print.hex = 2;
 	if (st_flag->width > st_print.size + st_print.sign + st_print.hex)
-		st_print.space = st_flag->width - st_print.size + st_print.sign + st_print.hex;
+		st_print.space = st_flag->width - (st_print.size + st_print.sign + st_print.hex);
 	return (st_print);
 }
 
