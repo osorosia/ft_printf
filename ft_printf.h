@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 17:03:18 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/09 12:54:21 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:39:29 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ void	get_xx(va_list ap, t_str *st_str);
 void	get_per(t_str *st_str);
 
 // utils
-size_t	calc_number_of_digit(long long num, const char *base);
-size_t	calc_unsigned_number_of_digit(size_t num, const char *base);
 void	set_number_base(char *str, long long num, const char *base);
 void	set_unsigned_number_base(char *str, size_t num, const char *base);
 

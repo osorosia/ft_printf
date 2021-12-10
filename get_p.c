@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 06:43:17 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/08 12:37:56 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:38:59 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	get_p(va_list ap, t_str *st_str)
 	const char	*base = "0123456789abcdef";
 
 	p = va_arg(ap, size_t);
-	st_str->size = calc_unsigned_number_of_digit(p, base);
+	st_str->size = ft_get_digit(p, base);
 	st_str->str = (char *)malloc(sizeof(char) * (st_str->size + 1));
 	if (st_str->str == NULL)
 		return ;
