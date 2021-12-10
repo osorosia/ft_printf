@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 20:47:03 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/03 11:30:22 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:35:32 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+// original
+
+long long	ft_abs_ll(long long num);
+size_t  ft_get_digit(size_t num, const char *base);
+size_t  ft_get_digit_ll(long long num, const char *base);
+
+// normal
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
