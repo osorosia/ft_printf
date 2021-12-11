@@ -317,9 +317,10 @@ void test_sharp() {
     CASE("sharp_c"); P("[%#c]", 'a');
     SUB();
     CASE("sharp_s"); P("[%#s]", NULL);
+    CASE("sharp_s"); P("[%#s]", "");
     CASE("sharp_s"); P("[%#s]", "aiueo");
     SUB();
-    CASE("sharp_p"); P("[%#p]", 0);
+    CASE("sharp_p"); P_FT("[%#p]", 0); P_LINUX("[0x0]");
     CASE("sharp_p"); P("[%#p]", 100);
     SUB();
     CASE("sharp_d"); P("[%#d]", 0);
@@ -400,14 +401,40 @@ void test_plus() {
     CASE("plus_per"); P("[%+%]");
 }
 
-void test_special()
-{
+void test_special() {
     INIT();
-    CASE("special_[#]"); P("[%#x]", 0);
-    CASE("spec  wial_[#]"); P("[%#X]", 0);
-    CASE("sharp_x"); P("[%#x]", 0);
 
+    SUB();
+    CASE("sp_[#]"); P("[%#x]", 0);
+    CASE("sp_[#]"); P("[%#X]", 0);
+    SUB();
+    CASE("sp_[10.]"); P("[%10.c]", 0);
+    CASE("sp_[10.]"); P("[%10.s]", 0);
+    CASE("sp_[10.]"); P("[%10.p]", 0);
+    CASE("sp_[10.]"); P("[%10.d]", 0);
+    CASE("sp_[10.]"); P("[%10.i]", 0);
+    CASE("sp_[10.]"); P("[%10.u]", 0);
+    CASE("sp_[10.]"); P("[%10.X]", 0);
+    CASE("sp_[10.]"); P("[%10.%]", 0);
+    SUB();
+    CASE("sp_[10.0]"); P("[%10.0c]", 0);
+    CASE("sp_[10.0]"); P("[%10.0s]", 0);
+    CASE("sp_[10.0]"); P("[%10.0p]", 0);
+    CASE("sp_[10.0]"); P("[%10.0d]", 0);
+    CASE("sp_[10.0]"); P("[%10.0i]", 0);
+    CASE("sp_[10.0]"); P("[%10.0u]", 0);
+    CASE("sp_[10.0]"); P("[%10.0X]", 0);
+    CASE("sp_[10.0]"); P("[%10.0%]", 0);
+}
 
+void test_error() {
+    INIT();
+    SUB();
+    {
+        char s[8] = "abcd";
+        s[2] = '\0';
+        CASE('sp'); P(s);
+    }
 }
 
 int main() {
@@ -433,3 +460,5 @@ int main() {
     test_special();
     // test_error();
 }
+
+
