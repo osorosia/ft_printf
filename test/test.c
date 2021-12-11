@@ -503,8 +503,8 @@ void test_special() {
     CASE("sp_[10.0per]"); P_FT("[%10.0%]"); P_LINUX("[         %%]");
     SUB();
     CASE("sp_[10.6c]");      P("[%10.6c]", 'a'); SUB();
-    CASE("sp_[10.6s]");      P("[%10.6s]", NULL); P_LINUX("[    (null)]");
-    CASE("sp_[10.6s]");      P("[%10.6s]", "aiueo"); P_LINUX("[     aiueo]"); SUB();
+    CASE("sp_[10.6s]");      P("[%10.6s]", NULL);
+    CASE("sp_[10.6s]");      P("[%10.6s]", "aiueo"); SUB();
     CASE("sp_[10.6p]");   P_FT("[%10.6p]", 0); P_LINUX("[  0x000000]");
     CASE("sp_[10.6p]");      P("[%10.6p]", -1);
     CASE("sp_[10.6p]");      P("[%10.6p]", 1);
@@ -550,9 +550,9 @@ void test_special() {
     CASE("sp_[10.6per]"); P_FT("[%10.6%]"); P_LINUX("[         %%]");
     SUB();
     CASE("sp_[10.4c]");      P("[%10.4c]", 'a'); SUB();
-    CASE("sp_[10.4s]");      P("[%10.4s]", NULL); P_LINUX("[    (null)]");
-    CASE("sp_[10.4s]");      P("[%10.4s]", "aiueo"); P_LINUX("[     aiueo]"); SUB();
-    CASE("sp_[10.4p]");   P_FT("[%10.4p]", 0); P_LINUX("[  0x000000]");
+    CASE("sp_[10.4s]");   P_FT("[%10.4s]", NULL); P_LINUX("[      (nul]");
+    CASE("sp_[10.4s]");      P("[%10.4s]", "aiueo"); SUB();
+    CASE("sp_[10.4p]");   P_FT("[%10.4p]", 0); P_LINUX("[    0x0000]");
     CASE("sp_[10.4p]");      P("[%10.4p]", -1);
     CASE("sp_[10.4p]");      P("[%10.4p]", 1);
     CASE("sp_[10.4p]");      P("[%10.4p]", INT_MAX);
