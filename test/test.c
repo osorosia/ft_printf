@@ -316,14 +316,19 @@ void test_sharp() {
     SUB();
     CASE("sharp_c"); P("[%#c]", 'a');
     SUB();
+    CASE("sharp_s"); P("[%#s]", NULL);
     CASE("sharp_s"); P("[%#s]", "aiueo");
     SUB();
+    CASE("sharp_p"); P("[%#p]", 0);
     CASE("sharp_p"); P("[%#p]", 100);
     SUB();
+    CASE("sharp_d"); P("[%#d]", 0);
     CASE("sharp_d"); P("[%#d]", 100);
     SUB();
+    CASE("sharp_i"); P("[%#i]", 0);
     CASE("sharp_i"); P("[%#i]", 100);
     SUB();
+    CASE("sharp_u"); P("[%#u]", 0);
     CASE("sharp_u"); P("[%#u]", 100);
     SUB();
     CASE("sharp_x"); P("[%#x]", 0);
@@ -398,6 +403,10 @@ void test_plus() {
 void test_special()
 {
     INIT();
+    CASE("special_[#]"); P("[%#x]", 0);
+    CASE("spec  wial_[#]"); P("[%#X]", 0);
+    CASE("sharp_x"); P("[%#x]", 0);
+
 
 }
 
