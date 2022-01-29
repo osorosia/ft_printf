@@ -6,13 +6,13 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 16:49:06 by rnishimo          #+#    #+#             */
-/*   Updated: 2022/01/29 17:06:39 by rnishimo         ###   ########.fr       */
+/*   Updated: 2022/01/29 22:30:39 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_numlen_u(unsigned long long num)
+size_t	ft_numlen_u(unsigned long long num)
 {
 	size_t		len;
 	const int	base = 10;
