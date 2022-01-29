@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 09:50:20 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/09 13:09:14 by rnishimo         ###   ########.fr       */
+/*   Updated: 2022/01/29 21:47:48 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ static size_t	_get_base_size(t_str *st_str, t_flag *st_flag)
 		&& st_str->specifier == 's'
 		&& st_str->size > st_flag->precision)
 		return (st_flag->precision);
+	if (st_str->zero && st_flag->dot && st_flag->precision == 0)
+		return (0);
 	return (st_str->size);
 }
 

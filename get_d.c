@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 07:14:55 by rnishimo          #+#    #+#             */
-/*   Updated: 2022/01/29 17:51:25 by rnishimo         ###   ########.fr       */
+/*   Updated: 2022/01/29 21:41:00 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	get_d(va_list ap, t_str *st_str)
 	const int	base_size = 10;
 
 	num = va_arg(ap, int);
+	if (num == 0)
+		st_str->zero = true;
 	if (num < 0)
 		st_str->minus = true;
 	st_str->size = ft_numlen_base(ft_abs_ll(num), base_size);

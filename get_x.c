@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 07:38:27 by rnishimo          #+#    #+#             */
-/*   Updated: 2022/01/29 17:53:24 by rnishimo         ###   ########.fr       */
+/*   Updated: 2022/01/29 21:48:59 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	get_x(va_list ap, t_str *st_str)
 	const int		base_size = 16;
 
 	num = va_arg(ap, unsigned int);
+	if (num == 0)
+		st_str->zero = true;
 	st_str->size = ft_numlen_base(num, base_size);
 	st_str->str = (char *)malloc(sizeof(char) * (st_str->size + 1));
 	if (st_str->str == NULL)
