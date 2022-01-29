@@ -6,7 +6,7 @@
 #    By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 21:42:31 by rnishimo          #+#    #+#              #
-#    Updated: 2022/01/29 15:30:08 by rnishimo         ###   ########.fr        #
+#    Updated: 2022/01/29 15:39:11 by rnishimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,3 +68,8 @@ test: all
 .PHONY: norm
 norm:
 	norminette | grep Error
+
+.PHONY: t
+t: all
+	gcc ./.test/temp.c $(NAME)
+	./a.out
