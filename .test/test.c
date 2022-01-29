@@ -401,6 +401,63 @@ void test_plus() {
     CASE("plus_per"); P("[%+%]");
 }
 
+void test_plus_space() {
+    INIT();
+    SUB();
+    CASE("+space_c"); P("[%+ c]", 'a');
+    SUB();
+    CASE("+space_s"); P("[%+ s]", "aiueo");
+    SUB();
+    CASE("+space_p"); P_FT("[%+ p]", 0); P_LINUX("[0x0]");
+    CASE("+space_p"); P_FT("[%+ p]", 100); P_LINUX("[0x64]");
+    SUB();
+    CASE("+space_d"); P("[%+ d]", 0);
+    CASE("+space_d"); P("[%+ d]", 100);
+    CASE("+space_d"); P("[%+ d]", -100);
+    SUB();
+    CASE("+space_i"); P("[%+ i]", 0);
+    CASE("+space_i"); P("[%+ i]", 100);
+    CASE("+space_i"); P("[%+ i]", -100);
+    SUB();
+    CASE("+space_u"); P("[%+ u]", 0);
+    CASE("+space_u"); P("[%+ u]", 100);
+    SUB();
+    CASE("+space_x"); P("[%+ x]", 0);
+    CASE("+space_x"); P("[%+ x]", 100);
+    SUB();
+    CASE("+space_X"); P("[%+ X]", 0);
+    CASE("+space_X"); P("[%+ X]", 100);
+    SUB();
+    CASE("+space_per"); P("[%+ %]");
+    
+    SUB();
+    CASE("space+_c"); P("[% +c]", 'a');
+    SUB();
+    CASE("space+_s"); P("[% +s]", "aiueo");
+    SUB();
+    CASE("space+_p"); P_FT("[% +p]", 0); P_LINUX("[0x0]");
+    CASE("space+_p"); P_FT("[% +p]", 100); P_LINUX("[0x64]");
+    SUB();
+    CASE("space+_d"); P("[% +d]", 0);
+    CASE("space+_d"); P("[% +d]", 100);
+    CASE("space+_d"); P("[% +d]", -100);
+    SUB();
+    CASE("space+_i"); P("[% +i]", 0);
+    CASE("space+_i"); P("[% +i]", 100);
+    CASE("space+_i"); P("[% +i]", -100);
+    SUB();
+    CASE("space+_u"); P("[% +u]", 0);
+    CASE("space+_u"); P("[% +u]", 100);
+    SUB();
+    CASE("space+_x"); P("[% +x]", 0);
+    CASE("space+_x"); P("[% +x]", 100);
+    SUB();
+    CASE("space+_X"); P("[% +X]", 0);
+    CASE("space+_X"); P("[% +X]", 100);
+    SUB();
+    CASE("space+_per"); P("[% +%]");
+}
+
 void test_special() {
     INIT();
 
@@ -673,6 +730,7 @@ int main() {
     test_sharp();
     test_space();
     test_plus();
+    test_plus_space();
     // other
     // test_special();
     // test_error();
