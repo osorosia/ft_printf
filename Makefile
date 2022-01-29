@@ -6,7 +6,7 @@
 #    By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 21:42:31 by rnishimo          #+#    #+#              #
-#    Updated: 2022/01/29 15:17:57 by rnishimo         ###   ########.fr        #
+#    Updated: 2022/01/29 15:30:08 by rnishimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,6 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 AR = ar rcs
 
-all: $(NAME)
-
 $(NAME): $(OBJS)
 	make -C ./libft
 	cp ./libft/libft.a ./$(NAME)
@@ -43,20 +41,30 @@ $(NAME): $(OBJS)
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
+.PHONY: all
+all: $(NAME)
+
+.PHONY: clean
 clean:
 	$(RM) $(NAME)
 
+.PHONY: fclean
 fclean: clean
 	$(RM) *.gch
 	$(RM) $(OBJS)
 
+.PHONY: re
 re: fclean all
 
+.PHONY: bonus
 bonus: all
 
+.PHONY: test
 test: all
 	cd .test && bash test.sh
 	cd ..
 	make fclean
 
-.PHONY: all clean fclean re test
+.PHONY: norm
+norm:
+	norminette | grep Error
