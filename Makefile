@@ -6,7 +6,7 @@
 #    By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 21:42:31 by rnishimo          #+#    #+#              #
-#    Updated: 2022/01/29 22:25:07 by rnishimo         ###   ########.fr        #
+#    Updated: 2022/01/29 23:48:28 by rnishimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,12 @@ debug: re
 
 .PHONY: t
 t:
+	make debug
+	gcc ./.test/temp.c $(NAME)
+	valgrind --leak-check=full ./a.out
+
+.PHONY: tt
+tt:
 	make debug
 	gcc ./.test/temp.c $(NAME)
 	./a.out
