@@ -6,7 +6,7 @@
 #    By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 21:42:31 by rnishimo          #+#    #+#              #
-#    Updated: 2021/12/09 09:48:04 by rnishimo         ###   ########.fr        #
+#    Updated: 2022/01/29 15:17:57 by rnishimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,8 +54,8 @@ re: fclean all
 
 bonus: all
 
-t: all
-	cd test && bash test.sh
+test: all
+	cd .test && bash test.sh
 	cd ..
 	make fclean
 

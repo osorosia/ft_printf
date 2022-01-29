@@ -650,7 +650,7 @@ void test_error() {
     {
         char s[8] = "abcd";
         s[2] = '\0';
-        CASE('sp'); P(s);
+        CASE("sp"); P(s);
     }
 }
 
