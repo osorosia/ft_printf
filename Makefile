@@ -6,7 +6,7 @@
 #    By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 21:42:31 by rnishimo          #+#    #+#              #
-#    Updated: 2022/01/29 15:39:11 by rnishimo         ###   ########.fr        #
+#    Updated: 2022/01/29 20:24:17 by rnishimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ SRCS = ft_printf.c \
 	print.c \
 	init_struct_print.c \
 	set_number_base.c \
-	calc_number_of_digit.c \
 
 OBJS = $(SRCS:.c=.o)
 
