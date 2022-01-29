@@ -732,7 +732,7 @@ int main() {
     test_plus();
     test_plus_space();
     // other
-    // test_special();
+    test_special();
     // test_error();
 }
 
