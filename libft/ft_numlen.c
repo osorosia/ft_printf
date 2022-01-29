@@ -1,56 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_digit.c                                     :+:      :+:    :+:   */
+/*   ft_numlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/10 18:28:06 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/10 18:39:36 by rnishimo         ###   ########.fr       */
+/*   Created: 2022/01/29 16:49:06 by rnishimo          #+#    #+#             */
+/*   Updated: 2022/01/29 17:06:44 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t  ft_get_digit(size_t num, const char *base)
+size_t	ft_numlen(long long num)
 {
-	size_t	digit;
-	size_t	base_size;
+	size_t		len;
+	const int	base = 10;
 
-	base_size = ft_strlen(base);
-	if (base_size == 0)
+	if (base == 0)
 		return (0);
 	if (num == 0)
 		return (1);
-	digit = 0;
-	while (num != 0)
-	{
-		num /= base_size;
-		digit++;
-	}
-	return (digit);
-}
-
-size_t	ft_get_digit_ll(long long num, const char *base)
-{
-	size_t	digit;
-	size_t	base_size;
-
-	base_size = ft_strlen(base);
-	if (base_size == 0)
-		return (0);
-	digit = 0;
-	if (num == 0)
-		return (1);
+	if (num == LONG_MIN)
+		num++;
+	len = 0;
 	if (num < 0)
-	{
-		num *= -1;
-		digit++;
-	}
+		len++;
 	while (num != 0)
 	{
-		num /= base_size;
-		digit++;
+		num /= base;
+		len++;
 	}
-	return (digit);
+	return (len);
 }

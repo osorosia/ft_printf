@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_numlen_u.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/06 13:34:39 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/11/11 18:06:39 by rnishimo         ###   ########.fr       */
+/*   Created: 2022/01/29 16:49:06 by rnishimo          #+#    #+#             */
+/*   Updated: 2022/01/29 17:06:39 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+size_t ft_numlen_u(unsigned long long num)
 {
-	unsigned char	*s1_ptr;
-	unsigned char	*s2_ptr;
-	size_t			i;
+	size_t		len;
+	const int	base = 10;
 
-	s1_ptr = (unsigned char *)s1;
-	s2_ptr = (unsigned char *)s2;
-	i = 0;
-	while (i < n)
+	if (base == 0)
+		return (0);
+	if (num == 0)
+		return (1);
+	len = 0;
+	while (num != 0)
 	{
-		if (s1_ptr[i] != s2_ptr[i] || s1_ptr[i] == '\0')
-			return ((int)s1_ptr[i] - (int)s2_ptr[i]);
-		i++;
+		num /= base;
+		len++;
 	}
-	return (0);
+	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 12:18:48 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/03 11:30:11 by rnishimo         ###   ########.fr       */
+/*   Updated: 2021/11/15 12:51:43 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,4 @@ void	ft_putstr_fd(char *s, int fd)
 		s_len -= buffer_size;
 	}
 	write(fd, s, s_len);
-}
-
-void	ft_putnstr_fd(char *s, size_t n, int fd)
-{
-	if (s == NULL || fd < 0)
-		return ;
-	write(fd, s, n);
 }
