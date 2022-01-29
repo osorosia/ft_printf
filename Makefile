@@ -6,7 +6,7 @@
 #    By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 21:42:31 by rnishimo          #+#    #+#              #
-#    Updated: 2022/01/29 20:24:17 by rnishimo         ###   ########.fr        #
+#    Updated: 2022/01/29 21:12:21 by rnishimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ SRCS = ft_printf.c \
 	print.c \
 	init_struct_print.c \
 	set_number_base.c \
+	debug.c \
+	debug1.c \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -32,13 +34,17 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 AR = ar rcs
 
+ifeq ($(findstring debug, $(MAKECMDGOALS)), debug)
+DEBUG = -D DEBUG=1
+endif
+
 $(NAME): $(OBJS)
 	make -C ./libft
 	cp ./libft/libft.a ./$(NAME)
 	$(AR) $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) $(DEBUG) -c -o $@ $<
 
 .PHONY: all
 all: $(NAME)
@@ -68,7 +74,11 @@ test: all
 norm:
 	norminette | grep Error
 
+.PHONY: debug
+debug: re
+
 .PHONY: t
-t: all
+t:
+	make debug
 	gcc ./.test/temp.c $(NAME)
 	./a.out

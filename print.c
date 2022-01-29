@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 19:24:59 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/10 18:04:10 by rnishimo         ###   ########.fr       */
+/*   Updated: 2022/01/29 20:57:01 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ size_t	print(t_str *st_str, t_flag *st_flag)
 	t_print	st_print;
 
 	st_print = init_struct_print(st_str, st_flag);
+	debug_t_str(st_str);
+	debug_t_flag(st_flag);
+	debug_t_print(&st_print);
 	if (st_str->str == NULL)
 		return ((size_t)SIZE_MAX);
 	if (!st_flag->minus)

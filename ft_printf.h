@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 17:03:18 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/10 18:39:29 by rnishimo         ###   ########.fr       */
+/*   Updated: 2022/01/29 20:48:29 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,10 @@ void	get_per(t_str *st_str);
 // utils
 void	set_number_base(char *str, long long num, const char *base);
 void	set_unsigned_number_base(char *str, size_t num, const char *base);
+
+// debug
+void	debug_t_print(t_print *st);
+void	debug_t_flag(t_flag *st);
+void	debug_t_str(t_str *st);
 
 #endif

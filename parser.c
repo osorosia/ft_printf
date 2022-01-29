@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:39:45 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/09 13:07:04 by rnishimo         ###   ########.fr       */
+/*   Updated: 2022/01/29 20:55:24 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@ static void	parse_flag(const char **format, t_flag *st_flag)
 			st_flag->plus = true;
 		(*format)++;
 	}
+	if (st_flag->plus)
+		st_flag->space = false;
+	if (st_flag->minus)
+		st_flag->zero = false;
 }
 
 static void	parse_width(const char **format, t_flag *st_flag)
