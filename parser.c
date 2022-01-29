@@ -6,13 +6,13 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:39:45 by rnishimo          #+#    #+#             */
-/*   Updated: 2022/01/29 20:55:24 by rnishimo         ###   ########.fr       */
+/*   Updated: 2022/01/29 22:20:12 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	parse_specifier(const char **format, va_list ap, t_str *st_str)
+static void	parse_specifier(char **format, va_list ap, t_str *st_str)
 {
 	st_str->specifier = **format;
 	if (**format == 'c')
@@ -33,9 +33,8 @@ static void	parse_specifier(const char **format, va_list ap, t_str *st_str)
 		get_per(st_str);
 }
 
-static void	parse_precision(const char **format, t_flag *st_flag)
+static void	parse_precision(char **format, t_flag *st_flag)
 {
-	(void)st_flag;
 	if (**format == '.')
 	{
 		st_flag->dot = true;
@@ -47,9 +46,9 @@ static void	parse_precision(const char **format, t_flag *st_flag)
 	}
 }
 
-static void	parse_flag(const char **format, t_flag *st_flag)
+static void	parse_flag(char **format, t_flag *st_flag)
 {
-	while (ft_strchr("-0# +", **format))
+	while (**format && ft_strchr("-0# +", **format))
 	{
 		if (**format == '-')
 			st_flag->minus = true;
@@ -69,9 +68,9 @@ static void	parse_flag(const char **format, t_flag *st_flag)
 		st_flag->zero = false;
 }
 
-static void	parse_width(const char **format, t_flag *st_flag)
+static void	parse_width(char **format, t_flag *st_flag)
 {
-	if (ft_strchr("123456789", **format))
+	if (**format && ft_strchr("123456789", **format))
 	{
 		st_flag->width = (size_t)ft_atoi(*format);
 		while (ft_isdigit(**format))
@@ -79,18 +78,27 @@ static void	parse_width(const char **format, t_flag *st_flag)
 	}
 }
 
-void	parse(const char **format, va_list ap, t_str *st_str, t_flag *st_flag)
+bool	parse(char **format, va_list ap, t_str *st_str, t_flag *st_flag)
 {
+	char	*prev;
+
+	prev = *format;
 	(*format)++;
-	if (ft_strchr("0-# +", **format))
+	if (**format && ft_strchr("0-# +", **format))
 		parse_flag(format, st_flag);
-	if (ft_strchr("123456789", **format))
+	if (**format && ft_strchr("123456789", **format))
 		parse_width(format, st_flag);
-	if (ft_strchr(".", **format))
+	if (**format && ft_strchr(".", **format))
 		parse_precision(format, st_flag);
-	if (ft_strchr("cspdiuxX%", **format))
+	if (**format && ft_strchr("cspdiuxX%", **format))
 		parse_specifier(format, ap, st_str);
+	else
+	{
+		parse_error(st_str, st_flag);
+		*format = prev;
+	}
 	if (st_str->str == NULL)
-		return ;
+		return (false);
 	(*format)++;
+	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 17:03:18 by rnishimo          #+#    #+#             */
-/*   Updated: 2022/01/29 21:40:06 by rnishimo         ###   ########.fr       */
+/*   Updated: 2022/01/29 22:22:04 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ size_t	print(t_str *st_str, t_flag *st_flag);
 t_print	init_struct_print(t_str *st_str, t_flag *st_flag);
 
 // parser
-void	parse(const char **format, va_list ap, t_str *st_str, t_flag *st_flag);
+bool	parse(char **format, va_list ap, t_str *st_str, t_flag *st_flag);
 void	get_c(va_list ap, t_str *st_str);
 void	get_s(va_list ap, t_str *st_str);
 void	get_p(va_list ap, t_str *st_str);
@@ -66,6 +66,9 @@ void	get_u(va_list ap, t_str *st_str);
 void	get_x(va_list ap, t_str *st_str);
 void	get_xx(va_list ap, t_str *st_str);
 void	get_per(t_str *st_str);
+
+// parser_error
+void	parse_error(t_str *st_str, t_flag *st_flag);
 
 // utils
 void	set_number_base(char *str, long long num, const char *base);

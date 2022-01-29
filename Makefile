@@ -6,13 +6,14 @@
 #    By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 21:42:31 by rnishimo          #+#    #+#              #
-#    Updated: 2022/01/29 21:24:47 by rnishimo         ###   ########.fr        #
+#    Updated: 2022/01/29 22:25:07 by rnishimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 SRCS = ft_printf.c \
 	parser.c \
+	parser_error.c \
 	get_c.c \
 	get_s.c \
 	get_p.c \
