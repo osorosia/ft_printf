@@ -6,7 +6,7 @@
 #    By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/08 19:29:20 by rnishimo          #+#    #+#              #
-#    Updated: 2022/01/29 17:07:04 by rnishimo         ###   ########.fr        #
+#    Updated: 2022/01/29 18:02:01 by rnishimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ ft_numlen_u_base.c \
 ft_putchar_fd.c \
 ft_putendl_fd.c \
 ft_putnbr_fd.c \
+ft_putnstr_fd.c \
 ft_putstr_fd.c \
 ft_split.c \
 ft_strchr.c \
@@ -97,6 +98,10 @@ re: fclean all
 
 .PHONY: bonus
 bonus: all
+
+.PHONY: norm
+norm:
+	norminette | grep Error
 
 .PHONY: test
 test: all

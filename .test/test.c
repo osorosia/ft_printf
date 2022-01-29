@@ -674,7 +674,7 @@ int main() {
     test_space();
     test_plus();
     // other
-    test_special();
+    // test_special();
     // test_error();
 }
 
