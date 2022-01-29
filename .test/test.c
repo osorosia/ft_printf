@@ -37,6 +37,12 @@
         printf("\n------\n\n") 
 #endif
 
+#ifdef __APPLE__
+bool mac = true;
+#else
+bool mac = false;
+#endif
+
 #define INIT() int ret=0; int test_case=0; SUB()
 
 int printf_linux(const char *format, ...)
@@ -652,63 +658,6 @@ void test_special() {
     CASE("sp_[10.4X]");      P("[%10.4X]", INT_MAX + 1LL);
     CASE("sp_[10.4X]");      P("[%10.4X]", INT_MIN - 1LL); SUB();
     CASE("sp_[10.4per]"); P_FT("[%10.4%]"); P_LINUX("[         %%]");
-    SUB();
-    CASE("sp_[10.-4c]");      P("[%10.-4c]", 'a'); SUB();
-    CASE("sp_[10.-4s]");   P_FT("[%10.-4s]", NULL); P_LINUX("[      (nul]");
-    CASE("sp_[10.-4s]");      P("[%10.-4s]", "aiueo"); SUB();
-    CASE("sp_[10.-4p]");   P_FT("[%10.-4p]", 0); P_LINUX("[    0x0000]");
-    CASE("sp_[10.-4p]");      P("[%10.-4p]", -1);
-    CASE("sp_[10.-4p]");      P("[%10.-4p]", 1);
-    CASE("sp_[10.-4p]");      P("[%10.-4p]", INT_MAX);
-    CASE("sp_[10.-4p]");      P("[%10.-4p]", INT_MIN);
-    CASE("sp_[10.-4p]");      P("[%10.-4p]", INT_MAX + 1LL);
-    CASE("sp_[10.-4p]");      P("[%10.-4p]", INT_MIN - 1LL); SUB();
-    CASE("sp_[10.-4d]");      P("[%10.-4d]", 0);
-    CASE("sp_[10.-4d]");      P("[%10.-4d]", -1);
-    CASE("sp_[10.-4d]");      P("[%10.-4d]", 1);
-    CASE("sp_[10.-4d]");      P("[%10.-4d]", INT_MAX + 1LL);
-    CASE("sp_[10.-4d]");      P("[%10.-4d]", INT_MIN - 1LL);
-    CASE("sp_[10.-4d]");      P("[%10.-4d]", INT_MAX + 1LL);
-    CASE("sp_[10.-4d]");      P("[%10.-4d]", INT_MIN - 1LL); SUB();
-    CASE("sp_[10.-4i]");      P("[%10.-4i]", 0);
-    CASE("sp_[10.-4i]");      P("[%10.-4i]", -1);
-    CASE("sp_[10.-4i]");      P("[%10.-4i]", 1);
-    CASE("sp_[10.-4i]");      P("[%10.-4i]", INT_MAX + 1LL);
-    CASE("sp_[10.-4i]");      P("[%10.-4i]", INT_MIN - 1LL);
-    CASE("sp_[10.-4i]");      P("[%10.-4i]", INT_MAX + 1LL);
-    CASE("sp_[10.-4i]");      P("[%10.-4i]", INT_MIN - 1LL); SUB();
-    CASE("sp_[10.-4u]");      P("[%10.-4u]", 0);
-    CASE("sp_[10.-4u]");      P("[%10.-4u]", -1);
-    CASE("sp_[10.-4u]");      P("[%10.-4u]", 1);
-    CASE("sp_[10.-4u]");      P("[%10.-4u]", INT_MAX + 1LL);
-    CASE("sp_[10.-4u]");      P("[%10.-4u]", INT_MIN - 1LL);
-    CASE("sp_[10.-4u]");      P("[%10.-4u]", INT_MAX + 1LL);
-    CASE("sp_[10.-4u]");      P("[%10.-4u]", INT_MIN - 1LL); SUB();
-    CASE("sp_[10.-4x]");      P("[%10.-4x]", 0);
-    CASE("sp_[10.-4x]");      P("[%10.-4x]", -1);
-    CASE("sp_[10.-4x]");      P("[%10.-4x]", 1);
-    CASE("sp_[10.-4x]");      P("[%10.-4x]", INT_MAX + 1LL);
-    CASE("sp_[10.-4x]");      P("[%10.-4x]", INT_MIN - 1LL);
-    CASE("sp_[10.-4x]");      P("[%10.-4x]", INT_MAX + 1LL);
-    CASE("sp_[10.-4x]");      P("[%10.-4x]", INT_MIN - 1LL); SUB();
-    CASE("sp_[10.-4X]");      P("[%10.-4X]", 0);
-    CASE("sp_[10.-4X]");      P("[%10.-4X]", -1);
-    CASE("sp_[10.-4X]");      P("[%10.-4X]", 1);
-    CASE("sp_[10.-4X]");      P("[%10.-4X]", INT_MAX + 1LL);
-    CASE("sp_[10.-4X]");      P("[%10.-4X]", INT_MIN - 1LL);
-    CASE("sp_[10.-4X]");      P("[%10.-4X]", INT_MAX + 1LL);
-    CASE("sp_[10.-4X]");      P("[%10.-4X]", INT_MIN - 1LL); SUB();
-    CASE("sp_[10.-4per]"); P_FT("[%10.-4%]"); P_LINUX("[         %%]");
-}
-
-void test_error() {
-    INIT();
-    SUB();
-    {
-        char s[8] = "abcd";
-        s[2] = '\0';
-        CASE("sp"); P(s);
-    }
 }
 
 int main() {
@@ -733,7 +682,4 @@ int main() {
     test_plus_space();
     // other
     test_special();
-    // test_error();
 }
-
-
