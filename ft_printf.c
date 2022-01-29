@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 16:53:50 by rnishimo          #+#    #+#             */
-/*   Updated: 2021/12/09 13:09:34 by rnishimo         ###   ########.fr       */
+/*   Updated: 2022/01/29 21:34:34 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	_vprintf(const char *format, va_list ap)
 	size_t	print_size;
 	size_t	pre_size;
 	t_str	st_str;	
-	t_flag	st_flag;	
+	t_flag	st_flag;
 
 	print_size = 0;
 	while (*format != '\0')
