@@ -6,7 +6,7 @@
 /*   By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 01:39:45 by rnishimo          #+#    #+#             */
-/*   Updated: 2022/01/29 22:20:12 by rnishimo         ###   ########.fr       */
+/*   Updated: 2022/01/30 01:01:24 by rnishimo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ bool	parse(char **format, va_list ap, t_str *st_str, t_flag *st_flag)
 	}
 	if (st_str->str == NULL)
 		return (false);
+	if (st_flag->dot && ft_strchr("diuxX", st_str->specifier))
+		st_flag->zero = false;
 	(*format)++;
 	return (true);
 }
