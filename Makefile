@@ -6,7 +6,7 @@
 #    By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 21:42:31 by rnishimo          #+#    #+#              #
-#    Updated: 2022/01/30 19:59:40 by rnishimo         ###   ########.fr        #
+#    Updated: 2022/01/30 20:01:09 by rnishimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,8 @@ re: fclean all
 
 .PHONY: bonus
 bonus: all
+
+# ------------------------------
 
 .PHONY: test
 test: re
