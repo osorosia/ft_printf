@@ -6,7 +6,7 @@
 #    By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 21:42:31 by rnishimo          #+#    #+#              #
-#    Updated: 2022/01/30 10:20:52 by rnishimo         ###   ########.fr        #
+#    Updated: 2022/01/30 19:58:17 by rnishimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,11 +29,7 @@ SRCS = ft_printf.c \
 	debug1.c \
 
 OBJS = $(SRCS:.c=.o)
-
-CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
-RM = rm -f
-AR = ar rcs
 
 ifeq ($(findstring debug, $(MAKECMDGOALS)), debug)
 DEBUG = -D DEBUG=1
@@ -42,22 +38,21 @@ endif
 $(NAME): $(OBJS)
 	make -C ./libft
 	cp ./libft/libft.a ./$(NAME)
-	$(AR) $(NAME) $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(DEBUG) -c -o $@ $<
+	gcc $(CFLAGS) $(DEBUG) -c -o $@ $<
 
 .PHONY: all
 all: $(NAME)
 
 .PHONY: clean
 clean:
-	$(RM) $(NAME)
+	rm -f $(NAME)
 
 .PHONY: fclean
 fclean: clean
-	$(RM) *.gch
-	$(RM) $(OBJS)
+	rm -f $(OBJS)
 
 .PHONY: re
 re: fclean all
