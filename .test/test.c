@@ -16,7 +16,7 @@
         ft_putchar_fd(':', 1); \
         test_case++
     #define SUB() test_case=0; \
-        ft_putstr_fd("\n------\n\n", 1) 
+        ft_putstr_fd("\n------\n\n", 1)
 #else
     #ifdef __linux__
         #define P_FT(...)
@@ -35,6 +35,14 @@
         test_case++
     #define SUB() test_case=0; \
         printf("\n------\n\n") 
+#endif
+
+#ifdef FT
+    #define PP_FT(...) P(__VA_ARGS__)
+    #define PP(...)
+#else
+    #define PP_FT(...)
+    #define PP(...) P(__VA_ARGS__)
 #endif
 
 #ifdef __APPLE__
@@ -660,6 +668,15 @@ void test_special() {
     CASE("sp_[10.4per]"); P_FT("[%10.4%]"); P_LINUX("[         %%]");
 }
 
+void test_leaks() {
+    INIT();
+    CASE("leaks_no_spec"); PP_FT("[%5a]", 0); PP("[%%5a]");
+    CASE("leaks_no_spec"); PP_FT("[% -+]", 0); PP("[%% -+]");
+    SUB();
+    CASE("leaks_[per]"); PP_FT("%"); PP("%%");
+    CASE("leaks_[per]"); PP_FT("%%%%%%%"); PP("%%%%%%%%");
+}
+
 int main() {
     test_normal();
     test_c();
@@ -682,6 +699,8 @@ int main() {
     test_plus_space();
     // other
     test_special();
+    // leaks
+    test_leaks();
 }
 
 #ifdef FT
