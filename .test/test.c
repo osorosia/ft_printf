@@ -683,3 +683,13 @@ int main() {
     // other
     test_special();
 }
+
+#ifdef FT
+#ifdef __APPLE__
+void end(void)__attribute__((destructor));
+void end(void)
+{
+    system("leaks a.out &> leaks.log");
+}
+#endif
+#endif
