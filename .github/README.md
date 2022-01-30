@@ -11,7 +11,7 @@
         - num=0のとき、無効 
     - '0': 0埋め
         - c, s, p, d, i, u, x, X, % 
-        - precisionが有効(>0?)(TODO)、かつd,i,u,x,Xのとき、無効
+        - precisionが有効(precision=0も含む)、かつd,i,u,x,Xのとき、無効
     - '-': 左寄せ
         - c, s, p, d, i, u, x, X, %
         - overrides '0'
