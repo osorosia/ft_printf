@@ -6,7 +6,7 @@
 #    By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 21:42:31 by rnishimo          #+#    #+#              #
-#    Updated: 2022/01/29 23:52:07 by rnishimo         ###   ########.fr        #
+#    Updated: 2022/01/30 10:20:52 by rnishimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ test: re
 
 .PHONY: norm
 norm:
-	norminette | grep Error
+	norminette | grep Error | cat
 
 .PHONY: debug
 debug: re
