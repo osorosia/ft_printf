@@ -6,7 +6,7 @@
 #    By: rnishimo <rnishimo@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/22 21:42:31 by rnishimo          #+#    #+#              #
-#    Updated: 2022/01/30 20:01:09 by rnishimo         ###   ########.fr        #
+#    Updated: 2022/01/31 11:43:47 by rnishimo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,3 +74,9 @@ norm:
 
 .PHONY: debug
 debug: re
+
+.PHONY: submit
+submit:
+	rm -f ./libft/get_next_line.c
+	cat ./libft/Makefile | grep -v get_next_line > ./libft/tmp
+	cat ./libft/tmp > ./libft/Makefile
